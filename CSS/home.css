@@ -1,0 +1,144 @@
+.body {
+    font-family: cambria;
+    float: right;
+    width: 80%;
+    padding-left: 3%;
+    padding-right: 5%;
+    padding-top: 2%;
+}
+.main{
+    /*background-color: rgb(173, 150, 204);*/
+    width: 15%;
+    position: relative;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+   margin-left: 1rem;
+    float: left;
+    font-family: cursive;
+}
+h3{
+   color: black;
+    font-family: cursive;
+}
+.menuItem{
+    font-family: cursive;
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+    display: block;
+    margin-top: 9%;
+}
+.menuItem:hover{
+    background-color: white;
+    width: content-box;
+}
+.menuBorder{
+    border: 1px solid black;
+    border-color: black;
+}
+
+.addbtn, .addbtn1{
+    height: 30px;
+    background-color: rgb(173, 150, 204);
+    border: none;
+    border-radius: 10px 10px;
+    color: white;
+    margin-left: 1rem;
+  padding-right: 15px;
+    padding-left: 15px;
+}
+.addbtn1{
+    margin-bottom: 4%;
+    
+}
+
+.facultyContainer {
+    margin-top: 30px;
+}
+.containerItem {
+    margin-top: 20px;
+}
+.input {
+    border: none;
+    border-bottom: 1px solid #38d39f;
+    outline: none;
+    width: 100%;
+}
+tr,
+td,
+th {
+    border: 1px solid black;
+}
+table{
+    padding-top: 10px;
+}
+table,tr {
+    width: 100%;
+}
+td,tr {
+    text-align: center;
+}
+th {
+    background-color: rgb(173, 150, 204);
+}
+.order-card {
+    color: #fff;
+}
+
+.bg-c-blue {
+    /*background: linear-gradient(45deg,#4099ff,#73b4ff);*/
+     background-image:linear-gradient(rgb(255, 136, 0),rgb(200, 177, 239));
+}
+
+.bg-c-green {
+    /*background: linear-gradient(45deg,#2ed8b6,#59e0c5);*/
+     background-image:linear-gradient(rgb(255, 136, 0),rgb(200, 177, 239));
+}
+
+.bg-c-yellow {
+    /*background: linear-gradient(45deg,#FFB64D,#ffcb80);*/
+     background-image:linear-gradient(rgb(255, 136, 0),rgb(200, 177, 239));
+}
+
+.bg-c-pink {
+    /*background: linear-gradient(45deg,#FF5370,#ff869a);*/
+     background-image:linear-gradient(rgb(255, 136, 0),rgb(200, 177, 239));
+}
+
+
+.card {
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+    box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+    border: none;
+    margin-bottom: 30px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.card .card-block {
+    padding: 25px;
+}
+
+.order-card i {
+    font-size: 26px;
+}
+
+.f-left {
+    float: left;
+}
+
+.f-right {
+    float: right;
+}
+#green {
+    height: 100%;
+    background: green;
+    text-align: center;
+    color: black;
+    padding: 15px;
+}
+button{
+      border-radius: 10px 10px;
+      background-color: graytext
+}
