@@ -3,9 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <title>Car Category</title>
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-        <link href="css/styles.css" rel="stylesheet" />
-        <script src="https://kit.fontawesome.com/be19cf8b62.js" crossorigin="anonymous"></script>
+        <meta name="description" content="Car Category" />
+        <meta name="author" content="Car Category" /> 
     </head>
     <body>
         <?php
@@ -40,18 +39,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-<?php
-$query = "SELECT * FROM car_category";
-$result = $conn->query($query);
-$id = 1;
-while ($row = mysqli_fetch_array($result)) {
-    $Category_id = $row['Category_id'];
-    $Category_name = $row['Category_name'];
-    $Seats = $row['Seats'];
-    $Fuel = $row['Fuel'];
-    $Laggage = $row['Laggage'];
-    $Transmission = $row['Transmission'];
-    ?>
+                                <?php
+                                $query = "SELECT * FROM car_category";
+                                $result = $conn->query($query);
+                                $id = 1;
+                                while ($row = mysqli_fetch_array($result)) {
+                                    $Category_id = $row['Category_id'];
+                                    $Category_name = $row['Category_name'];
+                                    $Seats = $row['Seats'];
+                                    $Fuel = $row['Fuel'];
+                                    $Laggage = $row['Laggage'];
+                                    $Transmission = $row['Transmission'];
+                                    ?>
                                     <tr id='tr_<?= $id ?>'>
                                         <td><input type='checkbox' name='delete[]' value='<?= $Category_id ?>' ></td>
                                         <td><?= $Category_id ?></td>
@@ -61,29 +60,29 @@ while ($row = mysqli_fetch_array($result)) {
                                         <td><?= $Laggage ?></td>
                                         <td><?= $Transmission ?></td>
                                     </tr>
-    <?php
-    $id++;
-}
-?>
+                                    <?php
+                                    $id++;
+                                }
+                                ?>
                             </tbody>
                         </table>
                         <a href="AddCategory.php" class="btn btn-primary">+Add Category</a>
                         <input type="submit" class="btn btn-primary" name="Category_delete" id="Category_delete" value="Delete Category">
-<?php
-if (isset($_POST['Category_delete'])) {
+                        <?php
+                        if (isset($_POST['Category_delete'])) {
 
-    if (isset($_POST['delete'])) {
-        foreach ($_POST['delete'] as $deleteid) {
+                            if (isset($_POST['delete'])) {
+                                foreach ($_POST['delete'] as $deleteid) {
 //                                    echo $deleteid;
-            $deleteUser = "DELETE from car_category WHERE Category_id='$deleteid'";
-            $conn->query($deleteUser);
-        }
-        echo "<script>window.location.href='CarCategory.php'</script>";
-    } else {
-        echo '<script>Checkboxseleted();</script>';
-    }
-}
-?>
+                                    $deleteUser = "DELETE from car_category WHERE Category_id='$deleteid'";
+                                    $conn->query($deleteUser);
+                                }
+                                echo "<script>window.location.href='CarCategory.php'</script>";
+                            } else {
+                                echo '<script>Checkboxseleted();</script>';
+                            }
+                        }
+                        ?>
                     </div>
                 </form>
             </div>

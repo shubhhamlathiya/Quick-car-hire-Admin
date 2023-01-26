@@ -3,14 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <title>Admin</title>
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-        <link href="css/styles.css" rel="stylesheet" />
-        <script src="https://kit.fontawesome.com/be19cf8b62.js" crossorigin="anonymous"></script>
+        <meta name="description" content="Admin" />
+        <meta name="author" content="Admin" />
     </head>
     <body>
         <?php
         include './DatabaseConnection.php';
-              include './Sessionwithoutlogin.php';
+        include './Sessionwithoutlogin.php';
         include './header.php';
         ?>
         <script>

@@ -3,12 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <title>Offer | Add</title>
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-        <link href="css/styles.css" rel="stylesheet" />
-        <script src="https://kit.fontawesome.com/be19cf8b62.js" crossorigin="anonymous"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
-        <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/start/jquery-ui.css" rel="Stylesheet" type="text/css" />
+        <meta name="description" content="Add Offer" />
+        <meta name="author" content="Add Offer" />  
     </head>
     <body>
         <?php
@@ -60,7 +56,7 @@
                 <script type="text/javascript">
                     $(function () {
                         $("#Offer_Start_Date").datepicker({
-                    
+
                             onSelect: function (selected) {
                                 var dt = new Date(selected);
                                 dt.setDate(dt.getDate() + 1);

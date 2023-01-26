@@ -7,10 +7,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <head>
         <meta charset="UTF-8">
         <title>Admin | Add</title>
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-        <link href="css/styles.css" rel="stylesheet" />
-        <script src="https://kit.fontawesome.com/be19cf8b62.js" crossorigin="anonymous"></script>
-    </head>
+        <meta name="description" content="Add Admin" />
+        <meta name="author" content="Add admin" /> </head>
     <body>
         <?php
         // put your code here

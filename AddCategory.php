@@ -1,15 +1,10 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
--->
 <html>
     <head>
         <meta charset="UTF-8">
         <title>Category | Add</title>
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-        <link href="css/styles.css" rel="stylesheet" />
-        <script src="https://kit.fontawesome.com/be19cf8b62.js" crossorigin="anonymous"></script>
+        <meta name="description" content="Add Category" />
+        <meta name="author" content="Add Category" />
     </head>
     <body>
         <?php
@@ -96,10 +91,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         if ($conn->query($category) === TRUE) {
                             echo "<script>window.location.href='CarCategory.php'</script>";
                         } else {
-                             echo "<script> alert('$conn->error');</script>";
+                            echo "<script> alert('$conn->error');</script>";
                         }
                     } else {
-                         echo "<script>alert('This Category Id is already exist!');</script>";
+                        echo "<script>alert('This Category Id is already exist!');</script>";
                     }
                 }
                 ?>
