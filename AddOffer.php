@@ -1,10 +1,47 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <meta charset="UTF-8">
         <title>Offer | Add</title>
         <meta name="description" content="Add Offer" />
         <meta name="author" content="Add Offer" />  
+       <script type="text/javascript">
+            $(function () {
+                var dateToday = new Date();
+                var dateFormat = "mm/dd/yy";
+                beginDate = $("#Offer_Start_Date")
+                        .datepicker({
+
+                            changeMonth: true,
+                            minDate: dateToday
+
+                        })
+                        .on("change", function () {
+                            endDate.datepicker("option", "minDate", getDate(this));
+                        }),
+                        endDate = $("#Offer_End_Date").datepicker({
+
+                    changeMonth: true,
+                    minDate: dateToday
+
+                })
+                        .on("change", function () {
+                            beginDate.datepicker("option", "maxDate", getDate(this));
+                        });
+                function getDate(element) {
+                    var date;
+                    try {
+                        date = $.datepicker.parseDate(dateFormat, element.value);
+                    } catch (error) {
+                        date = null;
+                    }
+                    return date;
+                }
+            });
+        </script>
     </head>
     <body>
         <?php
@@ -52,26 +89,7 @@
                             <input type="submit"  name="Offersubmit" id="Offersubmit" class="btn btn-primary btn-lg"  value="Add Offer">
                         </div>
                     </form>
-                </div>
-                <script type="text/javascript">
-                    $(function () {
-                        $("#Offer_Start_Date").datepicker({
-
-                            onSelect: function (selected) {
-                                var dt = new Date(selected);
-                                dt.setDate(dt.getDate() + 1);
-                                $("#Offer_End_Date").datepicker("option", "minDate", dt);
-                            }
-                        });
-                        $("#Offer_End_Date").datepicker({
-                            onSelect: function (selected) {
-                                var dt = new Date(selected);
-                                dt.setDate(dt.getDate() - 1);
-                                $("#Offer_Start_Date").datepicker("option", "maxDate", dt);
-                            }
-                        });
-                    });
-                </script>
+                </div>             
                 <?php
                 if (isset($_POST['Offersubmit'])) {
                     $offercode = $_POST['Offer_Code'];
