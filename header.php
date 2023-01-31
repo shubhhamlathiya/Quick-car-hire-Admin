@@ -7,7 +7,8 @@
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://kit.fontawesome.com/be19cf8b62.js" crossorigin="anonymous"></script>
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        
     </head>
     <body>
         <?php

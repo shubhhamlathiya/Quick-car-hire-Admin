@@ -59,7 +59,6 @@
         if (isset($_POST['submit'])) {
             $Admin_email_id = $_POST['Email'];
             $Admin_password = $_POST['password'];
-
             $sql = "SELECT * FROM admin WHERE Admin_email_id = '$Admin_email_id' AND Admin_password = '$Admin_password' ";
             $result = mysqli_query($conn, $sql);
             $check = mysqli_fetch_array($result);

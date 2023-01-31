@@ -18,7 +18,7 @@
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-table me-1"></i>
-                        Offer
+                        Customer
                     </div>
                     <form method="post">
                         <div class="card-body">
@@ -60,14 +60,14 @@
                                     ?>
                                 </tbody>
                             </table>
-                           <input type="submit" class="btn btn-primary" name="customer_delete" id="but_delete" value="Delete Customer">
+                            <input type="submit" class="btn btn-primary" name="customer_delete" id="but_delete" value="Delete Customer">
                             <?php
                             if (isset($_POST['customer_delete'])) {
 
                                 if (isset($_POST['delete'])) {
                                     foreach ($_POST['delete'] as $deleteid) {
 //                                    echo $deleteid;
-                                        $deleteUser = "DELETE from offer WHERE Email='$deleteid'";
+                                        $deleteUser = "DELETE from customer WHERE Email='$deleteid'";
                                         $conn->query($deleteUser);
                                     }
                                     echo "<script>window.location.href='Customer.php'</script>";
@@ -93,6 +93,6 @@
                 </div>
             </footer>
         </div>
- 
+
     </body>
 </html>

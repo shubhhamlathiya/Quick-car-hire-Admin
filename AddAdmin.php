@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
--->
 <html>
     <head>
         <meta charset="UTF-8">
@@ -25,16 +21,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <div class="card-body" style="padding-left: 150px;padding-right: 150px;">
                     <form method="post">
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="Admin_name" name="Admin_name" type="text" placeholder="Full Name"  required>
+                            <input class="form-control" id="Admin_name" name="Admin_name" type="text" placeholder="Full Name" onkeypress="return (event.charCode > 64 &&
+                                            event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)"  required>
                             <label for="Adminname">Admin Name</label>
                         </div>
                         <div class="form-floating mb-3">
                             <input class="form-control" id="Admin_email_id" name="Admin_email_id" type="email" placeholder="Admin email id" required>
                             <label for="Adminemail">Admin email id</label>
+                            <span id="Email"></span>
                         </div>
                         <div class="form-floating mb-3">
                             <input class="form-control" id="Admin_password" name="Admin_password" type="password" placeholder="Admin password" required>
                             <label for="Adminpassword">Admin password</label>
+
                         </div>
                         <div class="form-floating mb-3">
                             <select class="form-select" aria-label="Default select example" name="Status" required>
@@ -56,6 +55,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </div>
                     </form>
                 </div>
+                <script>
+                    function Name() {
+                        $("#Fname").append("Only letters allowed.");
+                        $("#Fname").css("color", "red");
+                    }
+                    function Email() {
+                        $("#Email").append("Plase enter any valid email address.");
+                        $("#Email").css("color", "red");
+                    }
+                    function alreadyexistEmail() {
+                        $("#Email").append("This Admin Email Id is already exist!");
+                        $("#Email").css("color", "red");
+                    }
+                </script>
                 <?php
                 if (isset($_POST['Adminsubmit'])) {
                     $Admin_name = $_POST['Admin_name'];
@@ -63,6 +76,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     $Admin_password = $_POST['Admin_password'];
                     $Status = $_POST['Status'];
                     $ROle = $_POST['Role'];
+
+//                    if (!preg_match("/^[a-zA-Z ]*$/", $Admin_name)) {
+//                        echo "<script>Name();</script>";
+//                    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+//                        echo "<script>Email();</script>";
+//                    }
 
                     $CheckP = "SELECT * FROM admin WHERE Admin_email_id = '$Admin_email_id'";
                     $result = mysqli_query($conn, $CheckP);
@@ -75,7 +94,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             echo "<script> alert('$conn->error');</script>";
                         }
                     } else {
-                        echo "<script>alert('This Admin Email Id is already exist!');</script>";
+                        echo "<script>alreadyexistEmail();</script>";
                     }
                 }
                 ?>
