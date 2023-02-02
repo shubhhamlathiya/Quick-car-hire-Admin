@@ -62,11 +62,13 @@
             $sql = "SELECT * FROM admin WHERE Admin_email_id = '$Admin_email_id' AND Admin_password = '$Admin_password' ";
             $result = mysqli_query($conn, $sql);
             $check = mysqli_fetch_array($result);
-
+            
             if (isset($check)) {
+                if(mysqli_num_rows($result)>0){
                 $_SESSION['AdminID'] = $Admin_email_id;
                 $_SESSION['islogin'] = true;
                 header('Location: Dashboard.php');
+                }
             } else {
                 echo '<script>myFunction();</script>';
             }
