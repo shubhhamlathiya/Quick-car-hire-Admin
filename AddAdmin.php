@@ -83,13 +83,19 @@
 //                        echo "<script>Email();</script>";
 //                    }
 
-                    $CheckP = "SELECT * FROM admin WHERE Admin_email_id = '$Admin_email_id'";
-                    $result = mysqli_query($conn, $CheckP);
-                    $check = mysqli_fetch_array($result);
-                    if (!isset($check)) {
-                        $admin = "INSERT INTO admin VALUES ('$Admin_name', '$Admin_email_id', '$Admin_password', '$Status', '$ROle')";
-                        if ($conn->query($admin) === TRUE) {
-                            echo "<script>window.location.href='Admin.php'</script>";
+                    $CheckP = $conn->prepare("SELECT * FROM admin WHERE Admin_email_id = ?");
+                    $CheckP->bind_param("s",$Admin_email_id);
+                    $CheckP->execute();
+                    $result = $CheckP->get_result()->fetch_all(MYSQLI_ASSOC);
+                    if (!count($result)>0) {
+                        $admin=$conn->prepare("INSERT INTO admin VALUES (?,?,?,?,?)");
+                        $admin->bind_param("sssss",$Admin_name,$Admin_email_id,$Admin_password,$Status,$ROle);
+                        $admin->execute();
+                        $AddAdmin = $admin->get_result()->fetch_all(MYSQLI_ASSOC);
+                        if (count($AddAdmin)>0) {
+//                            echo "<script>window.location.href='Admin.php'</script>";
+                            header('Location: Admin.php');
+                            mysqli_close($AddAdmin);
                         } else {
                             echo "<script> alert('$conn->error');</script>";
                         }
@@ -97,6 +103,7 @@
                         echo "<script>alreadyexistEmail();</script>";
                     }
                 }
+                $conn->close();
                 ?>
             </div>
         </div>

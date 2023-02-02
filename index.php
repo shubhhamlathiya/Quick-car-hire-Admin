@@ -59,20 +59,25 @@
         if (isset($_POST['submit'])) {
             $Admin_email_id = $_POST['Email'];
             $Admin_password = $_POST['password'];
-            $sql = "SELECT * FROM admin WHERE Admin_email_id = '$Admin_email_id' AND Admin_password = '$Admin_password' ";
-            $result = mysqli_query($conn, $sql);
-            $check = mysqli_fetch_array($result);
-            
-            if (isset($check)) {
-                if(mysqli_num_rows($result)>0){
-                $_SESSION['AdminID'] = $Admin_email_id;
+
+            $sql= $conn->prepare("SELECT * FROM admin WHERE Admin_email_id = ? AND Admin_password = ? ");
+            $sql->bind_param("ss",$Admin_email_id,$Admin_password);
+            $sql->execute();
+            $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+//            echo "<pre>";
+//            print_r($result);
+//            echo "</pre>";
+//            exit();
+
+            if (count($result)>0) {
+                $_SESSION['Admin_name'] = $result[0]['Admin_name'];
                 $_SESSION['islogin'] = true;
                 header('Location: Dashboard.php');
-                }
             } else {
                 echo '<script>myFunction();</script>';
             }
         }
+        $conn->close();
         ?>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
