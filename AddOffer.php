@@ -7,41 +7,8 @@
         <meta charset="UTF-8">
         <title>Offer | Add</title>
         <meta name="description" content="Add Offer" />
-        <meta name="author" content="Add Offer" />  
-       <script type="text/javascript">
-            $(function () {
-                var dateToday = new Date();
-                var dateFormat = "mm/dd/yy";
-                beginDate = $("#Offer_Start_Date")
-                        .datepicker({
+        <meta name="author" content="Add Offer" />
 
-                            changeMonth: true,
-                            minDate: dateToday
-
-                        })
-                        .on("change", function () {
-                            endDate.datepicker("option", "minDate", getDate(this));
-                        }),
-                        endDate = $("#Offer_End_Date").datepicker({
-
-                    changeMonth: true,
-                    minDate: dateToday
-
-                })
-                        .on("change", function () {
-                            beginDate.datepicker("option", "maxDate", getDate(this));
-                        });
-                function getDate(element) {
-                    var date;
-                    try {
-                        date = $.datepicker.parseDate(dateFormat, element.value);
-                    } catch (error) {
-                        date = null;
-                    }
-                    return date;
-                }
-            });
-        </script>
     </head>
     <body>
         <?php
@@ -71,11 +38,11 @@
                             <label for="Offer_Amount">Offer Amount</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="Offer_Start_Date" name="Offer_Start_Date" type="text" placeholder="Offer Start Date" required/>
+                            <input class="form-control" id="Offer_Start_Date" name="Offer_Start_Date" type="date" placeholder="Offer Start Date" required/>
                             <label for="Offer_Start_Date">Offer Start Date</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="Offer_End_Date" name="Offer_End_Date" type="text" placeholder="Offer End Date" required/>
+                            <input class="form-control" id="Offer_End_Date" name="Offer_End_Date" type="date" placeholder="Offer End Date" required/>
                             <label for="Offer_End_Date">Offer End Date</label>
                         </div>
                         <div class="form-floating mb-3">
@@ -89,7 +56,41 @@
                             <input type="submit"  name="Offersubmit" id="Offersubmit" class="btn btn-primary btn-lg"  value="Add Offer">
                         </div>
                     </form>
-                </div>             
+                </div>
+<!--                <script type="text/javascript">-->
+<!--                    $(function () {-->
+<!--                        var dateToday = new Date();-->
+<!--                        var dateFormat = "mm/dd/yy";-->
+<!--                        beginDate = $("#Offer_Start_Date")-->
+<!--                            .datepicker({-->
+<!---->
+<!--                                changeMonth: true,-->
+<!--                                minDate: dateToday-->
+<!---->
+<!--                            })-->
+<!--                            .on("change", function () {-->
+<!--                                endDate.datepicker("option", "minDate", getDate(this));-->
+<!--                            }),-->
+<!--                            endDate = $("#Offer_End_Date").datepicker({-->
+<!---->
+<!--                                changeMonth: true,-->
+<!--                                minDate: dateToday-->
+<!---->
+<!--                            })-->
+<!--                                .on("change", function () {-->
+<!--                                    beginDate.datepicker("option", "maxDate", getDate(this));-->
+<!--                                });-->
+<!--                        function getDate(element) {-->
+<!--                            var date;-->
+<!--                            try {-->
+<!--                                date = $.datepicker.parseDate(dateFormat, element.value);-->
+<!--                            } catch (error) {-->
+<!--                                date = null;-->
+<!--                            }-->
+<!--                            return date;-->
+<!--                        }-->
+<!--                    });-->
+<!--                </script>-->
                 <?php
                 if (isset($_POST['Offersubmit'])) {
                     $offercode = $_POST['Offer_Code'];
@@ -99,18 +100,24 @@
                     $enddate = $_POST['Offer_End_Date'];
                     $Status = $_POST['Offer_Status'];
 
-                    $CheckP = "SELECT * FROM offer WHERE Offer_Code = '$offercode'";
-                    $result = mysqli_query($conn, $CheckP);
-                    $check = mysqli_fetch_array($result);
-                    if (!isset($check)) {
-                        $offer = "INSERT INTO offer VALUES ('$offercode', '$OfferName', '$OfferAmount', '$startdate', '$enddate', '$Status')";
-                        if ($conn->query($offer) === TRUE) {
-                            echo "<script>window.location.href='Offers.php'</script>";
+
+                $CheckP = $conn->prepare("SELECT * FROM offer WHERE Offer_Code = ?");
+                $CheckP->bind_param("s",$offercode);
+                $result = $CheckP->execute();
+                $result = $CheckP->get_result()->fetch_all(MYSQLI_ASSOC);
+                //                  print_r($result);
+                //                  exit();
+                if (!count($result)>0) {
+                       $offer=$conn->prepare("INSERT INTO offer VALUES (?,?,?,?,?,?)");
+                        $offer->bind_param("ssisss",$offercode,$OfferName,$OfferAmount,$startdate,$enddate,$Status);
+                        $AddOffer=  $offer->execute();
+                        if ($AddOffer>0) {
+                           echo "<script>window.location.href='Offers.php'</script>";
                         } else {
                             echo "<script> alert('$conn->error');</script>";
                         }
                     } else {
-                        echo "<script>alert('This Offer Code is already exist!');</script>";
+                          echo "<script>alert('This Offer Code is already exist!');</script>";
                     }
                 }
                 ?>

@@ -57,7 +57,7 @@
                                 <div class="sb-nav-link-icon"><i class="fa-regular fa-user-secret"></i></div>
                                 Admin
                             </a>
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="Car.php">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-car"></i></div>
                                 Car
                             </a>

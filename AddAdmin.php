@@ -21,8 +21,7 @@
                 <div class="card-body" style="padding-left: 150px;padding-right: 150px;">
                     <form method="post">
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="Admin_name" name="Admin_name" type="text" placeholder="Full Name" onkeypress="return (event.charCode > 64 &&
-                                            event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)"  required>
+                            <input class="form-control" id="Admin_name" name="Admin_name" type="text" placeholder="Full Name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)"  required>
                             <label for="Adminname">Admin Name</label>
                         </div>
                         <div class="form-floating mb-3">
@@ -75,27 +74,22 @@
                     $Admin_email_id = $_POST['Admin_email_id'];
                     $Admin_password = $_POST['Admin_password'];
                     $Status = $_POST['Status'];
-                    $ROle = $_POST['Role'];
-
-//                    if (!preg_match("/^[a-zA-Z ]*$/", $Admin_name)) {
-//                        echo "<script>Name();</script>";
-//                    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-//                        echo "<script>Email();</script>";
-//                    }
+                    $Role = $_POST['Role'];
 
                     $CheckP = $conn->prepare("SELECT * FROM admin WHERE Admin_email_id = ?");
                     $CheckP->bind_param("s",$Admin_email_id);
-                    $CheckP->execute();
+                    $result = $CheckP->execute();
                     $result = $CheckP->get_result()->fetch_all(MYSQLI_ASSOC);
+//                  print_r($result);
+//                  exit();
                     if (!count($result)>0) {
+
                         $admin=$conn->prepare("INSERT INTO admin VALUES (?,?,?,?,?)");
-                        $admin->bind_param("sssss",$Admin_name,$Admin_email_id,$Admin_password,$Status,$ROle);
-                        $admin->execute();
-                        $AddAdmin = $admin->get_result()->fetch_all(MYSQLI_ASSOC);
-                        if (count($AddAdmin)>0) {
-//                            echo "<script>window.location.href='Admin.php'</script>";
-                            header('Location: Admin.php');
-                            mysqli_close($AddAdmin);
+                        $admin->bind_param("sssss",$Admin_name,$Admin_email_id,$Admin_password,$Status,$Role);
+                        $AddAdmin=  $admin->execute();
+                        if ($AddAdmin>0) {
+                           echo "<script>window.location.href='Admin.php'</script>";
+//                            mysqli_close($AddAdmin);
                         } else {
                             echo "<script> alert('$conn->error');</script>";
                         }

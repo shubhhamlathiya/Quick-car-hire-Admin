@@ -80,29 +80,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     $Car_Status = $_POST['Car_Status'];
                     $Car_hire_cost = $_POST['Car_hire_cost'];
                     $Category_id = $_POST['Category_id'];
-
-                    $filename = $_FILES["Image"]["name"];
-                    $tempname = $_FILES["Image"]["tmp_name"];
-                    $folder = "./Carimg/" . $filename;
-
-                    $CheckP = "SELECT * FROM car WHERE R_no = '$R_no'";
-                    $result = mysqli_query($conn, $CheckP);
-                    $check = mysqli_fetch_array($result);
-                    if (!isset($check)) {
-                        $admin = "INSERT INTO car VALUES ('$R_no', '$Car_name', '$Car_brand', '$filename', '$City','$Category_id','$Car_Status','$Car_hire_cost')";
-                        if ($conn->query($admin) === TRUE) {
-                            if (move_uploaded_file($tempname, $folder)) {
-                                echo "<h3>  Image uploaded successfully!</h3>";
-                            } else {
-                                echo "<h3>  Failed to upload image!</h3>";
-                            }
-                            echo "<script>window.location.href='Car.php'</script>";
-                        } else {
-                            echo "<script> alert('$conn->error');</script>";
-                        }
-                    } else {
-                        echo "<script>alert('This Car R Number is already exist!');</script>";
-                    }
+                    $Img= $_FILES['Image'];
+    echo
+                    print_r($Img);
+//                    exit();
+//                    $CheckP = "SELECT * FROM car WHERE R_no = '$R_no'";
+//                    $result = mysqli_query($conn, $CheckP);
+//                    $check = mysqli_fetch_array($result);
+//                    if (!isset($check)) {
+//                        $admin = "INSERT INTO car VALUES ('$R_no', '$Car_name', '$Car_brand', '$Img', '$City','$Category_id','$Car_Status','$Car_hire_cost')";
+//                        if ($conn->query($admin) === TRUE) {
+//                            move_uploaded_file($_FILES["Image"]["tmp_name"],"CarImg/".$_FILES["Image"]["name"]);
+//                            echo "<script>window.location.href='Car.php'</script>";
+//                        } else {
+//                            echo "<script> alert('$conn->error');</script>";
+//                        }
+//                    } else {
+//                        echo "<script>alert('This Car R Number is already exist!');</script>";
+//                    }
                 }
                 ?>
             </div>
