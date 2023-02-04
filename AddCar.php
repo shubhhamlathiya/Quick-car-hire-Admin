@@ -32,11 +32,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <span id="ErrorR_no" style="color: red"> </span>
                         </div>
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="Car_name" name="Car_name" type="text" placeholder="Car Name" >
+                            <input class="form-control" id="Car_name" name="Car_name" type="text" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode > 31 && event.charCode < 33) || (event.charCode > 47 && event.charCode < 58)" placeholder="Car Name" >
                             <label for="Car_name">Car Name</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="Car_brand" name="Car_brand" type="text" placeholder="Car Brand" >
+                            <input class="form-control" id="Car_brand" name="Car_brand" type="text" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" placeholder="Car Brand" >
                             <label for="Car_brand">Car Brand</label>
                         </div>
                         <div class="form-floating mb-3">
@@ -65,11 +65,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <option id='tr_<?= $id ?>'>
                                         <?= $Category_id ?>
                                     </option>
-    <!--                                <tr id='tr_--><?php //= $id  ?><!--'>-->
-    <!--                                    <td><input type='checkbox' name='delete[]' value='--><?php //= $Category_id  ?><!--' ></td>-->
-    <!--                                    <td></td>-->
-                                    <!---->
-                                    <!--                                </tr>-->
                                     <?php
                                     $id++;
                                 }
@@ -78,7 +73,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <label for="Category_id">Category Id</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="Car_hire_cost" name="Car_hire_cost" type="text" placeholder="Car Hire Cost" >
+                            <input class="form-control" id="Car_hire_cost" name="Car_hire_cost" type="text" onkeypress="return (event.charCode > 47 && event.charCode < 58)" placeholder="Car Hire Cost" >
                             <label for="Car_hire_cost">Car Hire Cost</label>
                         </div>
                         <div class="form-floating mb-3">
@@ -94,6 +89,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </form>
                 </div>
                 <script>
+
                     $("#R_no").keyup(function (e) {
                         $("#ErrorR_no").html('');
 
@@ -140,23 +136,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     $Car_hire_cost = $_POST['Car_hire_cost'];
                     $Category_id = $_POST['Category_id'];
                     $Img = $_FILES['Image'];
-                    echo
-                    print_r($Img);
-//                    exit();
-//                    $CheckP = "SELECT * FROM car WHERE R_no = '$R_no'";
-//                    $result = mysqli_query($conn, $CheckP);
-//                    $check = mysqli_fetch_array($result);
-//                    if (!isset($check)) {
-//                        $admin = "INSERT INTO car VALUES ('$R_no', '$Car_name', '$Car_brand', '$Img', '$City','$Category_id','$Car_Status','$Car_hire_cost')";
-//                        if ($conn->query($admin) === TRUE) {
-//                            move_uploaded_file($_FILES["Image"]["tmp_name"],"CarImg/".$_FILES["Image"]["name"]);
-//                            echo "<script>window.location.href='Car.php'</script>";
-//                        } else {
-//                            echo "<script> alert('$conn->error');</script>";
-//                        }
-//                    } else {
-//                        echo "<script>alert('This Car R Number is already exist!');</script>";
-//                    }
+
+                    $CheckP = "SELECT * FROM car WHERE R_no = '$R_no'";
+                    $result = mysqli_query($conn, $CheckP);
+                    $check = mysqli_fetch_array($result);
+                    if (!isset($check)) {
+                        $admin = "INSERT INTO car VALUES ('$R_no', '$Car_name', '$Car_brand', '$Img', '$City','$Category_id','$Car_Status','$Car_hire_cost')";
+                        if ($conn->query($admin) === TRUE) {
+                            move_uploaded_file($_FILES["Image"]["tmp_name"],"CarImg/".$_FILES["Image"]["name"]);
+                            echo "<script>window.location.href='Car.php'</script>";
+                        } else {
+                            echo "<script> alert('$conn->error');</script>";
+                        }
+                    } else {
+                        echo "<script>alert('This Car R Number is already exist!');</script>";
+                    }
                 }
                 ?>
             </div>

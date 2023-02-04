@@ -24,6 +24,7 @@
                         <div class="form-floating mb-3">
                             <input class="form-control" id="Category_id" name="Category_id" type="text" placeholder="Category Id" required/>
                             <label for="Category_id">Category Id</label>
+                            <span id="ExitId"></span>
                         </div>
                         <div class="form-floating mb-3">
                             <select class="form-select" name="Category_name" required>
@@ -74,6 +75,12 @@
                         </div>
                     </form>
                 </div>
+                <script>
+                function alreadyexistId() {
+                $("#ExitId").append("This Category Id is already exist!");
+                $("#ExitId").css("color", "red");
+                }
+                </script>
                 <?php
                 if (isset($_POST['Categorysubmit'])) {
                     $Category_id = $_POST['Category_id'];
@@ -94,12 +101,12 @@
                         $category->bind_param("ssssss", $Category_id, $Category_name, $Seats, $Fuel, $Laggage, $Transmission);
                         $Addcategory = $category->execute();
                         if ($Addcategory > 0) {
-                            echo "<script>window.location.href='AddCategory.php'</script>";
+                            echo "<script>window.location.href='CarCategory.php'</script>";
                         } else {
                             echo "<script> alert('$conn->error');</script>";
                         }
                     } else {
-                        echo "<script>alert('This Category Id is already exist!');</script>";
+                        echo "<script>alreadyexistId();</script>";
                     }
                 }
                 ?>

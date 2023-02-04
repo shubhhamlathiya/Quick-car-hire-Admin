@@ -21,7 +21,7 @@
                 <div class="card-body" style="padding-left: 150px;padding-right: 150px;">
                     <form method="post">
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="Admin_name" name="Admin_name" type="text" placeholder="Full Name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)"  required>
+                            <input class="form-control" id="Admin_name" name="Admin_name" type="text" placeholder="Full Name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode > 31 && event.charCode < 33)"  required>
                             <label for="Adminname">Admin Name</label>
                         </div>
                         <div class="form-floating mb-3">
