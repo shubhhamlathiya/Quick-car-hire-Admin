@@ -27,16 +27,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <div class="card-body" style="padding-left: 150px;padding-right: 150px;">
                     <form method="post">
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="R_no" name="R_no" type="text" placeholder="MH03AH6414" >
+                            <input class="form-control" id="R_no" name="R_no" type="text" placeholder="MH03AH6414" REQUIRED>
                             <label for="R_no">R No</label>
                             <span id="ErrorR_no" style="color: red"> </span>
                         </div>
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="Car_name" name="Car_name" type="text" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode > 31 && event.charCode < 33) || (event.charCode > 47 && event.charCode < 58)" placeholder="Car Name" >
+                            <input class="form-control" id="Car_name" name="Car_name" type="text" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode > 31 && event.charCode < 33) || (event.charCode > 47 && event.charCode < 58)" placeholder="Car Name" REQUIRED>
                             <label for="Car_name">Car Name</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="Car_brand" name="Car_brand" type="text" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" placeholder="Car Brand" >
+                            <input class="form-control" id="Car_brand" name="Car_brand" type="text" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" placeholder="Car Brand" REQUIRED>
                             <label for="Car_brand">Car Brand</label>
                         </div>
                         <div class="form-floating mb-3">
@@ -44,7 +44,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <label for="Image">Image</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <select class="form-select" id="City" aria-label="Default select example" name="City" >
+                            <select class="form-select" id="City" aria-label="Default select example" name="City" required>
                                 <option selected>Ahmedabad</option>
                                 <option>Bharuch</option>
                                 <option>Navsari</option>
@@ -102,7 +102,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                             if ((i == 2 || i == 3 || i == 6 || i == 7 || i == 8 || i == 9)) {
                                 if (numpattern.test(dInput[i])) {
-                                    console.log('validnum' + dInput[i]);
+                                    // console.log('validnum' + dInput[i]);
                                     validstr += dInput[i];
                                 } else {
                                     $("#ErrorR_no").html("Only Digits").show();
@@ -112,8 +112,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                             if ((i == 0 || i == 1 || i == 4 || i == 5)) {
                                 if (alphapattern.test(dInput[i])) {
-                                    console.log('validword' + dInput[i]);
-                                    validstr += dInput[i];
+                                    // console.log('validword' + dInput[i]);
+                                    validstr += dInput  [i];
                                 } else {
                                     $("#ErrorR_no").html("Only Capital Alpahbets").show();
 
