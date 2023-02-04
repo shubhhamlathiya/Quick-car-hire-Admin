@@ -32,10 +32,10 @@
                                                 <input class="form-control" id="password" name="password" type="password" placeholder="Password" />
                                                 <label for="inputPassword">Password</label>
                                             </div>
-                                            <div class="form-check mb-3">
-                                                <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
-                                                <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
-                                            </div>
+<!--                                            <div class="form-check mb-3">-->
+<!--                                                <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />-->
+<!--                                                <label class="form-check-label" for="inputRememberPassword">Remember Password</label>-->
+<!--                                            </div>-->
                                             <div class="d-grid gap-2">
                                                 <!--<a class="small" href="password.html">Forgot Password?</a>-->
                                                 <input type="submit"  name="submit" id="submit" class="btn btn-primary btn-lg"  value="Login">

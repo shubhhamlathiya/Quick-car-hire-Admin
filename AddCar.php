@@ -73,7 +73,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <label for="Category_id">Category Id</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="Car_hire_cost" name="Car_hire_cost" type="text" onkeypress="return (event.charCode > 47 && event.charCode < 58)" placeholder="Car Hire Cost" >
+                            <input class="form-control" id="Car_hire_cost" name="Car_hire_cost" type="text" onkeypress="return (event.charCode > 47 && event.charCode < 58)" placeholder="Car Hire Cost" required>
                             <label for="Car_hire_cost">Car Hire Cost</label>
                         </div>
                         <div class="form-floating mb-3">
