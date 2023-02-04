@@ -38,11 +38,11 @@
                             <label for="Offer_Amount">Offer Amount</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="Offer_Start_Date" name="Offer_Start_Date" type="date" placeholder="Offer Start Date" required/>
+                            <input class="form-control" id="Offer_Start_Date" name="Offer_Start_Date" type="text" placeholder="Offer Start Date" required/>
                             <label for="Offer_Start_Date">Offer Start Date</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="Offer_End_Date" name="Offer_End_Date" type="date" placeholder="Offer End Date" required/>
+                            <input class="form-control" id="Offer_End_Date" name="Offer_End_Date" type="text" placeholder="Offer End Date" required/>
                             <label for="Offer_End_Date">Offer End Date</label>
                         </div>
                         <div class="form-floating mb-3">
@@ -57,40 +57,29 @@
                         </div>
                     </form>
                 </div>
-<!--                <script type="text/javascript">-->
-                <!--                    $(function () {-->
-                <!--                        var dateToday = new Date();-->
-                <!--                        var dateFormat = "mm/dd/yy";-->
-                <!--                        beginDate = $("#Offer_Start_Date")-->
-                <!--                            .datepicker({-->
-                <!---->
-                <!--                                changeMonth: true,-->
-                <!--                                minDate: dateToday-->
-                <!---->
-                <!--                            })-->
-                <!--                            .on("change", function () {-->
-                <!--                                endDate.datepicker("option", "minDate", getDate(this));-->
-                <!--                            }),-->
-                <!--                            endDate = $("#Offer_End_Date").datepicker({-->
-                <!---->
-                <!--                                changeMonth: true,-->
-                <!--                                minDate: dateToday-->
-                <!---->
-                <!--                            })-->
-                <!--                                .on("change", function () {-->
-                <!--                                    beginDate.datepicker("option", "maxDate", getDate(this));-->
-                <!--                                });-->
-                <!--                        function getDate(element) {-->
-                <!--                            var date;-->
-                <!--                            try {-->
-                <!--                                date = $.datepicker.parseDate(dateFormat, element.value);-->
-                <!--                            } catch (error) {-->
-                <!--                                date = null;-->
-                <!--                            }-->
-                <!--                            return date;-->
-                <!--                        }-->
-                <!--                    });-->
-                <!--                </script>-->
+                <script type="text/javascript">
+                    $(function () {
+                        var dateToday = new Date();
+                        $("#Offer_Start_Date").datepicker({
+                            numberOfMonths: 1,
+                            minDate: dateToday,
+                            onSelect: function (selected) {
+                                var dt = new Date(selected);
+                                dt.setDate(dt.getDate() + 1);
+                                $("#Offer_End_Date").datepicker("option", "minDate", dt);
+                            }
+                        });
+                        $("#Offer_End_Date").datepicker({
+                            numberOfMonths: 1,
+                            minDate: dateToday,
+                            onSelect: function (selected) {
+                                var dt = new Date(selected);
+                                dt.setDate(dt.getDate() - 1);
+                                $("#Offer_Start_Date").datepicker("option", "maxDate", dt);
+                            }
+                        });
+                    });
+                </script>
                 <?php
                 if (isset($_POST['Offersubmit'])) {
                     $offercode = $_POST['Offer_Code'];
@@ -122,5 +111,8 @@
                 ?>
             </div>
         </div>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+        <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/start/jquery-ui.css" rel="Stylesheet" type="text/css" />
     </body>
 </html>
