@@ -77,18 +77,18 @@
                     $Role = $_POST['Role'];
 
                     $CheckP = $conn->prepare("SELECT * FROM admin WHERE Admin_email_id = ?");
-                    $CheckP->bind_param("s",$Admin_email_id);
+                    $CheckP->bind_param("s", $Admin_email_id);
                     $result = $CheckP->execute();
                     $result = $CheckP->get_result()->fetch_all(MYSQLI_ASSOC);
 //                  print_r($result);
 //                  exit();
-                    if (!count($result)>0) {
+                    if (!count($result) > 0) {
 
-                        $admin=$conn->prepare("INSERT INTO admin VALUES (?,?,?,?,?)");
-                        $admin->bind_param("sssss",$Admin_name,$Admin_email_id,$Admin_password,$Status,$Role);
-                        $AddAdmin=  $admin->execute();
-                        if ($AddAdmin>0) {
-                           echo "<script>window.location.href='Admin.php'</script>";
+                        $admin = $conn->prepare("INSERT INTO admin VALUES (?,?,?,?,?)");
+                        $admin->bind_param("sssss", $Admin_name, $Admin_email_id, $Admin_password, $Status, $Role);
+                        $AddAdmin = $admin->execute();
+                        if ($AddAdmin > 0) {
+                            echo "<script>window.location.href='Admin.php'</script>";
 //                            mysqli_close($AddAdmin);
                         } else {
                             echo "<script> alert('$conn->error');</script>";

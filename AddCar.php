@@ -8,7 +8,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <meta charset="UTF-8">
         <title>Add | Car</title>
         <meta name="description" content="Add Car" />
-        <meta name="author" content="Add Car" /> 
+        <meta name="author" content="Add Car" />
+
     </head>
     <body>
         <?php
@@ -26,8 +27,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <div class="card-body" style="padding-left: 150px;padding-right: 150px;">
                     <form method="post">
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="R_no" name="R_no" type="text" placeholder="R_no" >
+                            <input class="form-control" id="R_no" name="R_no" type="text" placeholder="MH03AH6414" >
                             <label for="R_no">R No</label>
+                            <span id="ErrorR_no" style="color: red"> </span>
                         </div>
                         <div class="form-floating mb-3">
                             <input class="form-control" id="Car_name" name="Car_name" type="text" placeholder="Car Name" >
@@ -52,7 +54,27 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <label for="Role">Role</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="Category_id" name="Category_id" type="text" placeholder="Category Id" >
+                            <select class="form-select" name="Category_id">
+                                <?php
+                                $query = "SELECT * FROM car_category";
+                                $result = $conn->query($query);
+                                $id = 1;
+                                while ($row = mysqli_fetch_array($result)) {
+                                    $Category_id = $row['Category_id'];
+                                    ?>
+                                    <option id='tr_<?= $id ?>'>
+                                        <?= $Category_id ?>
+                                    </option>
+    <!--                                <tr id='tr_--><?php //= $id  ?><!--'>-->
+    <!--                                    <td><input type='checkbox' name='delete[]' value='--><?php //= $Category_id  ?><!--' ></td>-->
+    <!--                                    <td></td>-->
+                                    <!---->
+                                    <!--                                </tr>-->
+                                    <?php
+                                    $id++;
+                                }
+                                ?>
+                            </select>
                             <label for="Category_id">Category Id</label>
                         </div>
                         <div class="form-floating mb-3">
@@ -71,6 +93,43 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </div>
                     </form>
                 </div>
+                <script>
+                    $("#R_no").keyup(function (e) {
+                        $("#ErrorR_no").html('');
+
+                        var validstr = '';
+                        var dInput = $(this).val();
+                        var numpattern = /^\d+$/;
+                        var alphapattern = /^[A-Z]+$/;
+
+                        for (var i = 0; i < dInput.length; i++) {
+
+                            if ((i == 2 || i == 3 || i == 6 || i == 7 || i == 8 || i == 9)) {
+                                if (numpattern.test(dInput[i])) {
+                                    console.log('validnum' + dInput[i]);
+                                    validstr += dInput[i];
+                                } else {
+                                    $("#ErrorR_no").html("Only Digits").show();
+
+                                }
+                            }
+
+                            if ((i == 0 || i == 1 || i == 4 || i == 5)) {
+                                if (alphapattern.test(dInput[i])) {
+                                    console.log('validword' + dInput[i]);
+                                    validstr += dInput[i];
+                                } else {
+                                    $("#ErrorR_no").html("Only Capital Alpahbets").show();
+
+                                }
+                            }
+
+                        }
+
+                        $(this).val(validstr);
+                        return false;
+                    });
+                </script>
                 <?php
                 if (isset($_POST['Carsubmit'])) {
                     $R_no = $_POST['R_no'];
@@ -80,8 +139,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     $Car_Status = $_POST['Car_Status'];
                     $Car_hire_cost = $_POST['Car_hire_cost'];
                     $Category_id = $_POST['Category_id'];
-                    $Img= $_FILES['Image'];
-    echo
+                    $Img = $_FILES['Image'];
+                    echo
                     print_r($Img);
 //                    exit();
 //                    $CheckP = "SELECT * FROM car WHERE R_no = '$R_no'";

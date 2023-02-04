@@ -60,8 +60,8 @@
             $Admin_email_id = $_POST['Email'];
             $Admin_password = $_POST['password'];
 
-            $sql= $conn->prepare("SELECT * FROM admin WHERE Admin_email_id = ? AND Admin_password = ? ");
-            $sql->bind_param("ss",$Admin_email_id,$Admin_password);
+            $sql = $conn->prepare("SELECT * FROM admin WHERE Admin_email_id = ? AND Admin_password = ? ");
+            $sql->bind_param("ss", $Admin_email_id, $Admin_password);
             $sql->execute();
             $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
 //            echo "<pre>";
@@ -69,7 +69,7 @@
 //            echo "</pre>";
 //            exit();
 
-            if (count($result)>0) {
+            if (count($result) > 0) {
                 $_SESSION['Admin_name'] = $result[0]['Admin_name'];
                 $_SESSION['islogin'] = true;
                 header('Location: Dashboard.php');

@@ -84,22 +84,22 @@
                     $Transmission = $_POST['Transmission'];
 
                     $CheckP = $conn->prepare("SELECT * FROM car_category WHERE Category_id = ?");
-                    $CheckP->bind_param("s",$Category_id);
+                    $CheckP->bind_param("s", $Category_id);
                     $result = $CheckP->execute();
                     $result = $CheckP->get_result()->fetch_all(MYSQLI_ASSOC);
                     //                  print_r($result);
                     //                  exit();
-                    if (!count($result)>0) {
-                       $category=$conn->prepare("INSERT INTO car_category VALUES (?,?,?,?,?,?)");
-                        $category->bind_param("ssssss",$Category_id, $Category_name, $Seats,$Fuel,$Laggage,$Transmission);
-                        $Addcategory=  $category->execute();
-                        if ($Addcategory>0) {
-                           echo "<script>window.location.href='AddCategory.php'</script>";
+                    if (!count($result) > 0) {
+                        $category = $conn->prepare("INSERT INTO car_category VALUES (?,?,?,?,?,?)");
+                        $category->bind_param("ssssss", $Category_id, $Category_name, $Seats, $Fuel, $Laggage, $Transmission);
+                        $Addcategory = $category->execute();
+                        if ($Addcategory > 0) {
+                            echo "<script>window.location.href='AddCategory.php'</script>";
                         } else {
                             echo "<script> alert('$conn->error');</script>";
                         }
                     } else {
-                         echo "<script>alert('This Category Id is already exist!');</script>";
+                        echo "<script>alert('This Category Id is already exist!');</script>";
                     }
                 }
                 ?>
