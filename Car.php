@@ -77,7 +77,7 @@
                         <a href="AddCar.php" class="btn btn-primary">+Add Car</a>
                         <input type="submit" class="btn btn-primary" name="Car_delete" id="but_delete" value="Delete Car">
                         <?php
-                        if (isset($_POST['Admin_delete'])) {
+                        if (isset($_POST['Car_delete'])) {
 
                             if (isset($_POST['delete'])) {
                                 foreach ($_POST['delete'] as $deleteid) {

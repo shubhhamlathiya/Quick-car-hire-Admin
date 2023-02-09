@@ -135,16 +135,27 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     $Car_Status = $_POST['Car_Status'];
                     $Car_hire_cost = $_POST['Car_hire_cost'];
                     $Category_id = $_POST['Category_id'];
+
+//                    $filename = $_FILES["Image"]["name"];
+//                    $tempname = $_FILES["Image"][$R_no];
+//                    $folder = "./CarImg/" . $tempname;
+
                     $Img = $_FILES['Image']['name'];
 //                    echo "$Img";
-//
-                    $CheckP = "SELECT * FROM car WHERE R_no = '$R_no'";
-                    $result = mysqli_query($conn, $CheckP);
-                    $check = mysqli_fetch_array($result);
-                    if (!isset($check)) {
-                        $admin = "INSERT INTO car VALUES ('$R_no', '$Car_name', '$Car_brand', '$Img', '$City','$Category_id','$Car_Status','$Car_hire_cost')";
-                        if ($conn->query($admin) === TRUE) {
-                            move_uploaded_file($_FILES["Image"]["tmp_name"],"CarImg/".$_FILES["Image"]["$R_no"]);
+
+                    $CheckP = $conn->prepare("SELECT * FROM car WHERE R_no = ?");
+                    $CheckP->bind_param("s", $R_no);
+                    $result = $CheckP->execute();
+                    $result = $CheckP->get_result()->fetch_all(MYSQLI_ASSOC);
+
+                    if (!count($result) > 0) {
+
+                        $car = $conn->prepare("INSERT INTO car VALUES (?,?,?,?,?,?,?,?)");
+                        $car->bind_param("sssssssi", $R_no, $Car_name, $Car_brand, $Img, $City, $Category_id, $Car_Status, $Car_hire_cost);
+                        $Addcar = $car->execute();
+
+                        if ($Addcar > 0) {
+                            move_uploaded_file($_FILES["Image"]["tmp_name"], "CarImg/" . $_FILES["Image"]["name"]);
                             echo "<script>window.location.href='Car.php'</script>";
                         } else {
                             echo "<script> alert('$conn->error');</script>";
