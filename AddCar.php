@@ -15,7 +15,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <?php
         // put your code here
         include './DatabaseConnection.php';
-        include './Sessionwithoutlogin.php';
+        //include './Sessionwithoutlogin.php';
         include './header.php';
         ?>
         <div id="layoutSidenav_content">
@@ -25,7 +25,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     Add Admin
                 </div>
                 <div class="card-body" style="padding-left: 150px;padding-right: 150px;">
-                    <form method="post">
+                    <form method="post" enctype="multipart/form-data">
                         <div class="form-floating mb-3">
                             <input class="form-control" id="R_no" name="R_no" type="text" placeholder="MH03AH6414" REQUIRED>
                             <label for="R_no">R No</label>
@@ -135,15 +135,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     $Car_Status = $_POST['Car_Status'];
                     $Car_hire_cost = $_POST['Car_hire_cost'];
                     $Category_id = $_POST['Category_id'];
-                    $Img = $_FILES['Image'];
-
+                    $Img = $_FILES['Image']['name'];
+//                    echo "$Img";
+//
                     $CheckP = "SELECT * FROM car WHERE R_no = '$R_no'";
                     $result = mysqli_query($conn, $CheckP);
                     $check = mysqli_fetch_array($result);
                     if (!isset($check)) {
                         $admin = "INSERT INTO car VALUES ('$R_no', '$Car_name', '$Car_brand', '$Img', '$City','$Category_id','$Car_Status','$Car_hire_cost')";
                         if ($conn->query($admin) === TRUE) {
-                            move_uploaded_file($_FILES["Image"]["tmp_name"],"CarImg/".$_FILES["Image"]["name"]);
+                            move_uploaded_file($_FILES["Image"]["tmp_name"],"CarImg/".$_FILES["Image"]["$R_no"]);
                             echo "<script>window.location.href='Car.php'</script>";
                         } else {
                             echo "<script> alert('$conn->error');</script>";
