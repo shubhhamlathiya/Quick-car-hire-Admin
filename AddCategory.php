@@ -19,7 +19,7 @@
                     <i class="fas fa-table me-1"></i>
                     Add Category
                 </div>
-                <div class="card-body">
+                <div class="card-body" style="padding-left: 150px;padding-right: 150px;">
                     <form method="post">
                         <div class="form-floating mb-3">
                             <input class="form-control" id="Category_id" name="Category_id" type="text" placeholder="Category Id" required/>

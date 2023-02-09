@@ -44,12 +44,12 @@
                                 $result = $conn->query($query);
                                 $id = 1;
                                 while ($row = mysqli_fetch_array($result)) {
-                                    $Offer_Code = $row['Offer_Code'];
-                                    $Offer_Name = $row['Offer_Name'];
-                                    $Offer_Amount = $row['Offer_Amount'];
-                                    $Offer_Start_Date = $row['Offer_Start_Date'];
-                                    $Offer_End_Date = $row['Offer_End_Date'];
-                                    $Offer_Status = $row['Offer_Status'];
+                                    $Offer_Code = $row['Offer_code'];
+                                    $Offer_Name = $row['Offer_name'];
+                                    $Offer_Amount = $row['Offer_amount'];
+                                    $Offer_Start_Date = $row['Offer_start_date'];
+                                    $Offer_End_Date = $row['Offer_end_date'];
+                                    $Offer_Status = $row['Status'];
                                     ?>
                                     <tr id='tr_<?= $id ?>'>
                                         <td><input type='checkbox' name='delete[]' value='<?= $Offer_Code ?>' ></td>

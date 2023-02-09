@@ -29,9 +29,10 @@
                                         <th scope="col"></th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Email</th>
-                                        <th scope="col">DOB</th>
-                                        <th scope="col">DL</th>
-                                        <th scope="col">AN</th>
+                                        <th scope="col">Mobile No</th>
+                                        <th scope="col">Date Of Birth</th>
+                                        <th scope="col">Driving Licence</th>
+                                        <th scope="col">AadharCard Number</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -42,14 +43,16 @@
                                     while ($row = mysqli_fetch_array($result)) {
                                         $Name = $row['Name'];
                                         $Email = $row['Email'];
-                                        $DOB = $row['DOB'];
-                                        $DL = $row['DL'];
-                                        $AN = $row['AN'];
+                                        $mobile=$row['MobileNo'];
+                                        $DOB = $row['Date_of_birth'];
+                                        $DL = $row['Driving_licence'];
+                                        $AN = $row['AadharCard_no'];
                                         ?>
                                         <tr id='tr_<?= $id ?>'>
                                             <td><input type='checkbox' name='delete[]' value='<?= $Email ?>' ></td>
                                             <td><?= $Name ?></td>
                                             <td><?= $Email ?></td>
+                                            <td><?= $mobile ?></td>
                                             <td><?= $DOB ?></td>
                                             <td><?= $DL ?></td>
                                             <td><?= $AN ?></td>

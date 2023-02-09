@@ -28,13 +28,13 @@
                             <thead>
                                 <tr>
                                     <th scope="col"></th>
-                                    <th scope="col">R_no</th>
+                                    <th scope="col">Registration no</th>
                                     <th scope="col">Car_name</th>
                                     <th scope="col">Car_brand</th>
                                     <th scope="col">Image</th>
                                     <th scope="col">City</th>
                                     <th scope="col">Category_id</th>
-                                    <th scope="col">Car_Status</th>
+                                    <th scope="col">Status</th>
                                     <th scope="col">Car_hire_cost</th>
                                 </tr>
                             </thead>
@@ -44,13 +44,13 @@
                                 $result = $conn->query($query);
                                 $id = 1;
                                 while ($row = mysqli_fetch_array($result)) {
-                                    $R_no = $row['R_no'];
+                                    $R_no = $row['Registration_no'];
                                     $Car_name = $row['Car_name'];
                                     $Car_brand = $row['Car_brand'];
                                     $Image = $row['Image'];
                                     $City = $row['City'];
                                     $Category_id = $row['Category_id'];
-                                    $Car_Status = $row['Car_Status'];
+                                    $Car_Status = $row['Status'];
                                     $Car_hire_cost = $row['Car_hire_cost'];
                                     ?>
                                     <tr id='tr_<?= $id ?>'>
@@ -58,14 +58,14 @@
                                         <td><?= $R_no ?></td>
                                         <td><?= $Car_name ?></td>
                                         <td><?= $Car_brand ?></td>
-                                        <td><?= $Image ?></td>
+                                        <td>
+                                            <img src="CarImg/<?php echo $Image; ?>" width="100px" height="100px"><br/>
+                                            <?php  echo $Image ?>
+                                        </td>
                                         <td><?= $City ?></td>
                                         <td><?= $Category_id ?></td>
                                         <td><?= $Car_Status ?></td>
                                         <td><?= $Car_hire_cost ?></td>
-                                        <td>
-
-                                        </td>
                                     </tr>
                                     <?php
                                     $id++;
@@ -82,7 +82,7 @@
                             if (isset($_POST['delete'])) {
                                 foreach ($_POST['delete'] as $deleteid) {
 //                                    echo $deleteid;
-                                    $deleteUser = "DELETE from car WHERE R_no='$deleteid'";
+                                    $deleteUser = "DELETE from car WHERE Registration_no='$deleteid'";
                                     $conn->query($deleteUser);
                                 }
                                 echo "<script>window.location.href='car.php'</script>";

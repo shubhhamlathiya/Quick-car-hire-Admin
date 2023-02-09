@@ -15,7 +15,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <?php
         // put your code here
         include './DatabaseConnection.php';
-        //include './Sessionwithoutlogin.php';
+        include './Sessionwithoutlogin.php';
         include './header.php';
         ?>
         <div id="layoutSidenav_content">
@@ -28,8 +28,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <form method="post" enctype="multipart/form-data">
                         <div class="form-floating mb-3">
                             <input class="form-control" id="R_no" name="R_no" type="text" placeholder="MH03AH6414" REQUIRED>
-                            <label for="R_no">R No</label>
-                            <span id="ErrorR_no" style="color: red"> </span>
+                            <label for="R_no">Registration No</label>
+                            <span id="RegistrationNo"> </span>
                         </div>
                         <div class="form-floating mb-3">
                             <input class="form-control" id="Car_name" name="Car_name" type="text" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode > 31 && event.charCode < 33) || (event.charCode > 47 && event.charCode < 58)" placeholder="Car Name" REQUIRED>
@@ -89,6 +89,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </form>
                 </div>
                 <script>
+                    function alreadyexistRegistrationNo() {
+                        $("#RegistrationNo").append("This Car Registration No is already exist!");
+                        $("#RegistrationNo").css("color", "red");
+                    }
 
                     $("#R_no").keyup(function (e) {
                         $("#ErrorR_no").html('');
@@ -143,29 +147,31 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     $Img = $_FILES['Image']['name'];
 //                    echo "$Img";
 
-                    $CheckP = $conn->prepare("SELECT * FROM car WHERE R_no = ?");
+                    $CheckP = $conn->prepare("SELECT * FROM car WHERE Registration_no = ?");
                     $CheckP->bind_param("s", $R_no);
                     $result = $CheckP->execute();
                     $result = $CheckP->get_result()->fetch_all(MYSQLI_ASSOC);
 
                     if (!count($result) > 0) {
 
+                        $extension = pathinfo($_FILES["Image"]["name"], PATHINFO_EXTENSION);
+                        $imgname= $R_no.".".$extension;
+
                         $car = $conn->prepare("INSERT INTO car VALUES (?,?,?,?,?,?,?,?)");
-                        $car->bind_param("sssssssi", $R_no, $Car_name, $Car_brand, $Img, $City, $Category_id, $Car_Status, $Car_hire_cost);
+                        $car->bind_param("sssssssi", $R_no, $Car_name, $Car_brand, $imgname, $City, $Category_id, $Car_Status, $Car_hire_cost);
                         $Addcar = $car->execute();
 
                         if ($Addcar > 0) {
-                            move_uploaded_file($_FILES["Image"]["tmp_name"], "CarImg/" . $_FILES["Image"]["name"]);
+                            move_uploaded_file($_FILES["Image"]["tmp_name"], "CarImg/" . $imgname);
                             echo "<script>window.location.href='Car.php'</script>";
                         } else {
                             echo "<script> alert('$conn->error');</script>";
                         }
                     } else {
-                        echo "<script>alert('This Car R Number is already exist!');</script>";
+                        echo "<script>alreadyexistRegistrationNo();</script>";
                     }
                 }
                 ?>
-
             </div>
         </div>
     </body>

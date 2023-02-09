@@ -45,7 +45,7 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
+                            <div class="sb-sidenav-menu-heading">Manu</div>
                             <a class="nav-link" href="Dashboard.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
@@ -55,7 +55,7 @@
                                 Customer
                             </a>
                             <a class="nav-link" href="Admin.php">
-                                <div class="sb-nav-link-icon"><i class="fa-regular fa-user-secret"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fa-regular fa-user"></i></div>
                                 Admin
                             </a>
                             <a class="nav-link" href="Car.php">
@@ -67,7 +67,7 @@
                                 Car Category
                             </a>
                             <a class="nav-link" href="Offers.php">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-car"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-percent"></i></div>
                                 Offers
                             </a>
                         </div>

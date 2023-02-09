@@ -28,6 +28,7 @@
                         <div class="form-floating mb-3">
                             <input class="form-control" id="Offer_Code" name="Offer_Code" type="text" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 47 && event.charCode < 58)" placeholder="Offer Code" required/>
                             <label for="Offer_Code">Offer Code</label>
+                            <span id="OfferCode"></span>
                         </div>
                         <div class="form-floating mb-3">
                             <input class="form-control" id="Offer_Name" name="Offer_Name" type="text" placeholder="Offer Name" required/>
@@ -58,6 +59,11 @@
                     </form>
                 </div>
                 <script type="text/javascript">
+                    function alreadyexistOffer() {
+                        $("#OfferCode").append("This Offer Code is already exist!");
+                        $("#OfferCode").css("color", "red");
+                    }
+
                     $(function () {
                         var dateToday = new Date();
                         $("#Offer_Start_Date").datepicker({
@@ -105,7 +111,7 @@
                             echo "<script> alert('$conn->error');</script>";
                         }
                     } else {
-                        echo "<script>alert('This Offer Code is already exist!');</script>";
+                        echo "<script>alreadyexistOffer();</script>";
                     }
                 }
                 ?>
