@@ -22,7 +22,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
-                    Add Admin
+                    Add Car
                 </div>
                 <div class="card-body" style="padding-left: 150px;padding-right: 150px;">
                     <form method="post" enctype="multipart/form-data">

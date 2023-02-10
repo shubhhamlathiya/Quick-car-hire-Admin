@@ -22,7 +22,7 @@
                 <div class="card-body" style="padding-left: 150px;padding-right: 150px;">
                     <form method="post">
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="Category_id" name="Category_id" type="text" placeholder="Category Id" required/>
+                            <input class="form-control" id="Category_id" name="Category_id" type="text" placeholder="Category Id" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode > 31 && event.charCode < 33)" required/>
                             <label for="Category_id">Category Id</label>
                             <span id="ExitId"></span>
                         </div>

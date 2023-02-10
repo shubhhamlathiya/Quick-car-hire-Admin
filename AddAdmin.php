@@ -89,7 +89,6 @@
                         $AddAdmin = $admin->execute();
                         if ($AddAdmin > 0) {
                             echo "<script>window.location.href='Admin.php'</script>";
-//                            mysqli_close($AddAdmin);
                         } else {
                             echo "<script> alert('$conn->error');</script>";
                         }

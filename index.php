@@ -27,10 +27,12 @@
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" id="Email" name="Email" type="email" placeholder="name@example.com" />
                                                 <label for="inputEmail">Email address</label>
+                                                <span id="email1"></span>
                                             </div>
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" id="password" name="password" type="password" placeholder="Password" />
                                                 <label for="inputPassword">Password</label>
+                                                <span id="password"></span>
                                             </div>
 <!--                                            <div class="form-check mb-3">-->
 <!--                                                <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />-->
@@ -51,8 +53,13 @@
             </div>
         </div>
         <script>
-            function myFunction() {
-                alert('please enter valid Email Id and Password!');
+            function email() {
+                $("#email1").append("Please enter valid email id!.");
+                $("#email1").css("color", "red");
+            }
+            function password() {
+                $("#password").append("Please enter valid password!.");
+                $("#password").css("color", "red");
             }
         </script>
         <?php
@@ -60,8 +67,9 @@
             $Admin_email_id = $_POST['Email'];
             $Admin_password = $_POST['password'];
 
-            $sql = $conn->prepare("SELECT * FROM admin WHERE Admin_email_id = ? AND Admin_password = ? ");
-            $sql->bind_param("ss", $Admin_email_id, $Admin_password);
+
+            $sql = $conn->prepare("SELECT * FROM admin WHERE Admin_email_id = ? ");
+            $sql->bind_param("s", $Admin_email_id );
             $sql->execute();
             $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
 //            echo "<pre>";
@@ -70,12 +78,22 @@
 //            exit();
 
             if (count($result) > 0) {
+                $sql = $conn->prepare("SELECT * FROM admin WHERE Admin_password = ? ");
+                $sql->bind_param("s", $Admin_password );
+                $sql->execute();
+                $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+
+                if (count($result) > 0) {
                 $_SESSION['Admin_name'] = $result[0]['Admin_name'];
                 $_SESSION['islogin'] = true;
                 header('Location: Dashboard.php');
             } else {
-                echo '<script>myFunction();</script>';
+                echo '<script>alert("Please enter valid password!.");</script>';
             }
+             }else{
+                echo '<script>alert("Please enter valid email id!.");</script>';
+                }
+
         }
         $conn->close();
         session_close();
