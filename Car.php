@@ -60,7 +60,7 @@
                                         <td><?= $Car_brand ?></td>
                                         <td>
                                             <img src="CarImg/<?php echo $Image; ?>" width="100px" height="100px"><br/>
-                                            <?php  echo $Image ?>
+                                            <?php echo $Image ?>
                                         </td>
                                         <td><?= $City ?></td>
                                         <td><?= $Category_id ?></td>

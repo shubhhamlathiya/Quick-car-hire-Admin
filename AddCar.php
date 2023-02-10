@@ -155,7 +155,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     if (!count($result) > 0) {
 
                         $extension = pathinfo($_FILES["Image"]["name"], PATHINFO_EXTENSION);
-                        $imgname= $R_no.".".$extension;
+                        $imgname = $R_no . "." . $extension;
 
                         $car = $conn->prepare("INSERT INTO car VALUES (?,?,?,?,?,?,?,?)");
                         $car->bind_param("sssssssi", $R_no, $Car_name, $Car_brand, $imgname, $City, $Category_id, $Car_Status, $Car_hire_cost);

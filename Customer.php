@@ -43,7 +43,7 @@
                                     while ($row = mysqli_fetch_array($result)) {
                                         $Name = $row['Name'];
                                         $Email = $row['Email'];
-                                        $mobile=$row['MobileNo'];
+                                        $mobile = $row['MobileNo'];
                                         $DOB = $row['Date_of_birth'];
                                         $DL = $row['Driving_licence'];
                                         $AN = $row['AadharCard_no'];

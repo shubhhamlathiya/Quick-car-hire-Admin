@@ -95,7 +95,6 @@
                     $enddate = $_POST['Offer_End_Date'];
                     $Status = $_POST['Offer_Status'];
 
-
                     $CheckP = $conn->prepare("SELECT * FROM offer WHERE Offer_Code = ?");
                     $CheckP->bind_param("s", $offercode);
                     $result = $CheckP->execute();

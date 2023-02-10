@@ -76,10 +76,10 @@
                     </form>
                 </div>
                 <script>
-                function alreadyexistId() {
-                $("#ExitId").append("This Category Id is already exist!");
-                $("#ExitId").css("color", "red");
-                }
+                    function alreadyexistId() {
+                        $("#ExitId").append("This Category Id is already exist!");
+                        $("#ExitId").css("color", "red");
+                    }
                 </script>
                 <?php
                 if (isset($_POST['Categorysubmit'])) {

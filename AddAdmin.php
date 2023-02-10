@@ -96,7 +96,7 @@
                     if (!count($result) > 0) {
                         if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($Admin_password) < 8) {
                             echo "<script>pass();</script>";
-                        }else{
+                        } else {
                             $admin = $conn->prepare("INSERT INTO admin VALUES (?,?,?,?,?)");
                             $admin->bind_param("sssss", $Admin_name, $Admin_email_id, $Admin_password, $Status, $Role);
                             $AddAdmin = $admin->execute();

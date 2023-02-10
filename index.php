@@ -34,10 +34,10 @@
                                                 <label for="inputPassword">Password</label>
                                                 <span id="password"></span>
                                             </div>
-<!--                                            <div class="form-check mb-3">-->
-<!--                                                <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />-->
-<!--                                                <label class="form-check-label" for="inputRememberPassword">Remember Password</label>-->
-<!--                                            </div>-->
+                                            <!--                                            <div class="form-check mb-3">-->
+                                            <!--                                                <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />-->
+                                            <!--                                                <label class="form-check-label" for="inputRememberPassword">Remember Password</label>-->
+                                            <!--                                            </div>-->
                                             <div class="d-grid gap-2">
                                                 <!--<a class="small" href="password.html">Forgot Password?</a>-->
                                                 <input type="submit"  name="submit" id="submit" class="btn btn-primary btn-lg"  value="Login">
@@ -67,9 +67,8 @@
             $Admin_email_id = $_POST['Email'];
             $Admin_password = $_POST['password'];
 
-
             $sql = $conn->prepare("SELECT * FROM admin WHERE Admin_email_id = ? ");
-            $sql->bind_param("s", $Admin_email_id );
+            $sql->bind_param("s", $Admin_email_id);
             $sql->execute();
             $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
 //            echo "<pre>";
@@ -79,21 +78,20 @@
 
             if (count($result) > 0) {
                 $sql = $conn->prepare("SELECT * FROM admin WHERE Admin_password = ? ");
-                $sql->bind_param("s", $Admin_password );
+                $sql->bind_param("s", $Admin_password);
                 $sql->execute();
                 $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
 
                 if (count($result) > 0) {
-                $_SESSION['Admin_name'] = $result[0]['Admin_name'];
-                $_SESSION['islogin'] = true;
-                header('Location: Dashboard.php');
-            } else {
-                echo '<script>alert("Please enter valid password!.");</script>';
-            }
-             }else{
-                echo '<script>alert("Please enter valid email id!.");</script>';
+                    $_SESSION['Admin_name'] = $result[0]['Admin_name'];
+                    $_SESSION['islogin'] = true;
+                    header('Location: Dashboard.php');
+                } else {
+                    echo '<script>alert("Please enter valid password!.");</script>';
                 }
-
+            } else {
+                echo '<script>alert("Please enter valid email id!.");</script>';
+            }
         }
         $conn->close();
         session_close();
