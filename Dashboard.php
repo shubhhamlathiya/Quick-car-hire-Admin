@@ -43,7 +43,7 @@
                             <div class="card bg-primary text-white mb-4">
                                 <div class="card-body">Total Customer<div><h2 style="margin-left: 60%"><?php echo $customer; ?></h2></div></div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="User.php">View Details</a>
+                                    <a class="small text-white stretched-link" href="Customer.php">View Details</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
@@ -55,9 +55,9 @@
                         ?>
                         <div class="col-xl-3 col-md-6">
                             <div class="card bg-primary text-white mb-4">
-                                <div class="card-body">Total Customer<div><h2 style="margin-left: 60%"><?php echo $car; ?></h2></div></div>
+                                <div class="card-body">Total Car<div><h2 style="margin-left: 60%"><?php echo $car; ?></h2></div></div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="User.php">View Details</a>
+                                    <a class="small text-white stretched-link" href="Car.php">View Details</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
