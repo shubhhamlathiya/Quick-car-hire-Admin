@@ -26,16 +26,16 @@
                 <div class="card-body" style="padding-left: 150px;padding-right: 150px;">
                     <form method="post">
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="Offer_Code" name="Offer_Code" type="text" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 47 && event.charCode < 58)" placeholder="Offer Code" required/>
+                            <input class="form-control" id="Offer_Code" name="Offer_Code" type="text" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 47 && event.charCode < 58)" placeholder="Offer Code" maxlength="10" required/>
                             <label for="Offer_Code">Offer Code</label>
                             <span id="OfferCode"></span>
                         </div>
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="Offer_Name" name="Offer_Name" type="text" placeholder="Offer Name" required/>
+                            <input class="form-control" id="Offer_Name" name="Offer_Name" type="text" placeholder="Offer Name"  onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode > 31 && event.charCode < 33)" required/>
                             <label for="Offer_Name">Offer Name</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="Offer_Amount" name="Offer_Amount" type="text" placeholder="Offer Amount" onkeypress="return (event.charCode > 47 && event.charCode < 58)" required/>
+                            <input class="form-control" id="Offer_Amount" name="Offer_Amount" type="text" placeholder="Offer Amount" onkeypress="return (event.charCode > 47 && event.charCode < 58)"  required/>
                             <label for="Offer_Amount">Offer Amount</label>
                         </div>
                         <div class="form-floating mb-3">
@@ -95,12 +95,13 @@
                     $enddate = $_POST['Offer_End_Date'];
                     $Status = $_POST['Offer_Status'];
 
+
                     $CheckP = $conn->prepare("SELECT * FROM offer WHERE Offer_Code = ?");
                     $CheckP->bind_param("s", $offercode);
                     $result = $CheckP->execute();
                     $result = $CheckP->get_result()->fetch_all(MYSQLI_ASSOC);
                     //                  print_r($result);
-                    //                  exit();
+//                                      exit();
                     if (!count($result) > 0) {
                         $offer = $conn->prepare("INSERT INTO offer VALUES (?,?,?,?,?,?)");
                         $offer->bind_param("ssisss", $offercode, $OfferName, $OfferAmount, $startdate, $enddate, $Status);
