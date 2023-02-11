@@ -26,7 +26,7 @@
                 <div class="card-body" style="padding-left: 150px;padding-right: 150px;">
                     <form method="post">
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="Offer_Code" name="Offer_Code" type="text" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 47 && event.charCode < 58)" placeholder="Offer Code" maxlength="10" required/>
+                            <input class="form-control" id="Offer_Code" name="Offer_Code" type="text" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 47 && event.charCode < 58)" placeholder="Offer Code" maxlength="10" required />
                             <label for="Offer_Code">Offer Code</label>
                             <span id="OfferCode"></span>
                         </div>
