@@ -83,7 +83,7 @@ $Offer_Status = $row['Status'];
                 </div>
                 <div class="d-grid gap-2">
                     <input type="submit" name="Offersubmit" id="Offersubmit" class="btn btn-primary btn-lg"
-                           value="Add Offer">
+                           value="Update Offer">
                 </div>
             </form>
         </div>
@@ -133,7 +133,7 @@ $Offer_Status = $row['Status'];
             //                  print_r($result);
 //                                      exit();
             if (!count($result) > 0) {
-                $offer = $conn->prepare("INSERT INTO offer VALUES (?,?,?,?,?,?)");
+                $offer = $conn->prepare("UPDATE offer SET Offer_code=?,Offer_name=?,Offer_amount=?,Offer_start_date=?,Offer_end_date=?,Status=? WHERE $id");
                 $offer->bind_param("ssisss", $offercode, $OfferName, $OfferAmount, $startdate, $enddate, $Status);
                 $AddOffer = $offer->execute();
                 if ($AddOffer > 0) {

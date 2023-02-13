@@ -112,7 +112,7 @@ include './header.php';
             //                  print_r($result);
 //                                      exit();
             if (!count($result) > 0) {
-                $offer = $conn->prepare("INSERT INTO offer VALUES (?,?,?,?,?,?)");
+                $offer = $conn->prepare("INSERT INTO offer (`Offer_code`, `Offer_name`, `Offer_amount`, `Offer_start_date`, `Offer_end_date`, `Status`) VALUES (?,?,?,?,?,?)");
                 $offer->bind_param("ssisss", $offercode, $OfferName, $OfferAmount, $startdate, $enddate, $Status);
                 $AddOffer = $offer->execute();
                 if ($AddOffer > 0) {

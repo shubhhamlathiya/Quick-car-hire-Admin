@@ -36,7 +36,7 @@ include './header.php';
                         <th scope="col">Offer Start Date</th>
                         <th scope="col">Offer End Date</th>
                         <th scope="col">Offer Status</th>
-                        <th scope="col"></th>
+                        <th scope="col">Offer Edit</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -45,6 +45,7 @@ include './header.php';
                     $result = $conn->query($query);
                     $id = 1;
                     while ($row = mysqli_fetch_array($result)) {
+                        $Oid=$row['Offer_id'];
                         $Offer_Code = $row['Offer_code'];
                         $Offer_Name = $row['Offer_name'];
                         $Offer_Amount = $row['Offer_amount'];
@@ -60,7 +61,7 @@ include './header.php';
                             <td><?= $Offer_Start_Date ?></td>
                             <td><?= $Offer_End_Date ?></td>
                             <td><?= $Offer_Status ?></td>
-                            <td><a href="editOffers.php?id=<?= $id; ?>"><i class="fa fa-edit"></i></a></td>
+                            <td><a href="editOffers.php?id=<?= $Oid; ?>"><i class="fa fa-edit"></i></a></td>
                         </tr>
                         <?php
                         $id++;
