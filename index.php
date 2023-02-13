@@ -80,13 +80,27 @@
                 $sql = $conn->prepare("SELECT * FROM admin WHERE Admin_password = ? ");
                 $sql->bind_param("s", $Admin_password);
                 $sql->execute();
-                $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+                $resultPassword = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
 
-                if (count($result) > 0) {
-                    $_SESSION['Admin_name'] = $result[0]['Admin_name'];
-                    $_SESSION['islogin'] = true;
-                    header('Location: Dashboard.php');
-                } else {
+
+                if (count($resultPassword) > 0) {
+                    foreach ($result as $row)
+                    {
+                        $user_email=$row['Admin_name'] ;
+                        $curr_status=$row['Status'];
+                    }
+                    if($curr_status=='Inactive') {
+//                        $message = "Sorry $user_email, your account is temporarily deactivated by the admin.";
+                        echo '<script>alert("Sorry, your account is temporarily deactivated by the admin.");</script>';
+                    }else{
+                        $_SESSION['Admin_name'] = $result[0]['Admin_name'];
+                        $_SESSION['islogin'] = true;
+                        header('Location: Dashboard.php');
+                    }
+
+
+                    }
+                 else {
                     echo '<script>alert("Please enter valid password!.");</script>';
                 }
             } else {
