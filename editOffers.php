@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <meta charset="UTF-8">
     <title>Offer | Edit</title>
-    <meta name="description" content="Add Offer" />
-    <meta name="author" content="Add Offer" />
+    <meta name="description" content="Add Offer"/>
+    <meta name="author" content="Add Offer"/>
 
 </head>
 <body>
@@ -26,7 +26,9 @@ $result = $query->get_result()->fetch_all(MYSQLI_ASSOC);
 //echo $result;
 //exit();
 //while ($row = mysqli_fetch_array($result)) {
-foreach ($result as $row)
+foreach ($result
+
+as $row)
 {
 $Offer_Code = $row['Offer_code'];
 $Offer_Name = $row['Offer_name'];
@@ -44,24 +46,32 @@ $Offer_Status = $row['Status'];
         <div class="card-body" style="padding-left: 150px;padding-right: 150px;">
             <form method="post" enctype="multipart/form-data">
                 <div class="form-floating mb-3">
-                    <input class="form-control" id="Offer_Code" name="Offer_Code" type="text" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 47 && event.charCode < 58)" placeholder="Offer Code" maxlength="10" value="<?php echo $Offer_Code;?>" required />
+                    <input class="form-control" id="Offer_Code" name="Offer_Code" type="text"
+                           onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 47 && event.charCode < 58)"
+                           placeholder="Offer Code" maxlength="10" value="<?php echo $Offer_Code; ?>" required/>
                     <label for="Offer_Code">Offer Code</label>
                     <span id="OfferCode"></span>
                 </div>
                 <div class="form-floating mb-3">
-                    <input class="form-control" id="Offer_Name" name="Offer_Name" type="text" placeholder="Offer Name"  onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode > 31 && event.charCode < 33)"  value="<?php echo $Offer_Name;?>" required/>
+                    <input class="form-control" id="Offer_Name" name="Offer_Name" type="text" placeholder="Offer Name"
+                           onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode > 31 && event.charCode < 33)"
+                           value="<?php echo $Offer_Name; ?>" required/>
                     <label for="Offer_Name">Offer Name</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input class="form-control" id="Offer_Amount" name="Offer_Amount" type="text" placeholder="Offer Amount" onkeypress="return (event.charCode > 47 && event.charCode < 58)" value="<?php echo $Offer_Amount;?>" required/>
+                    <input class="form-control" id="Offer_Amount" name="Offer_Amount" type="text"
+                           placeholder="Offer Amount" onkeypress="return (event.charCode > 47 && event.charCode < 58)"
+                           value="<?php echo $Offer_Amount; ?>" required/>
                     <label for="Offer_Amount">Offer Amount</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input class="form-control" id="Offer_Start_Date" name="Offer_Start_Date" type="text" placeholder="Offer Start Date" value="<?php echo $Offer_Start_Date;?>" required/>
+                    <input class="form-control" id="Offer_Start_Date" name="Offer_Start_Date" type="text"
+                           placeholder="Offer Start Date" value="<?php echo $Offer_Start_Date; ?>" required/>
                     <label for="Offer_Start_Date">Offer Start Date</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input class="form-control" id="Offer_End_Date" name="Offer_End_Date" type="text" placeholder="Offer End Date" value="<?php echo $Offer_End_Date;?>" required/>
+                    <input class="form-control" id="Offer_End_Date" name="Offer_End_Date" type="text"
+                           placeholder="Offer End Date" value="<?php echo $Offer_End_Date; ?>" required/>
                     <label for="Offer_End_Date">Offer End Date</label>
                 </div>
                 <div class="form-floating mb-3">
@@ -72,7 +82,8 @@ $Offer_Status = $row['Status'];
                     <label for="Offer_Status">Offer Status</label>
                 </div>
                 <div class="d-grid gap-2">
-                    <input type="submit"  name="Offersubmit" id="Offersubmit" class="btn btn-primary btn-lg"  value="Add Offer">
+                    <input type="submit" name="Offersubmit" id="Offersubmit" class="btn btn-primary btn-lg"
+                           value="Add Offer">
                 </div>
             </form>
         </div>
@@ -139,6 +150,7 @@ $Offer_Status = $row['Status'];
 </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
-<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/start/jquery-ui.css" rel="Stylesheet" type="text/css" />
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/start/jquery-ui.css" rel="Stylesheet"
+      type="text/css"/>
 </body>
 </html>
