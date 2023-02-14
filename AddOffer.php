@@ -77,6 +77,7 @@ include './header.php';
                 var dateToday = new Date();
                 $("#Offer_Start_Date").datepicker({
                     numberOfMonths: 1,
+                    dateFormat: "yy-mm-dd",
                     minDate: dateToday,
                     onSelect: function (selected) {
                         var dt = new Date(selected);
@@ -86,6 +87,7 @@ include './header.php';
                 });
                 $("#Offer_End_Date").datepicker({
                     numberOfMonths: 1,
+                    dateFormat: "yy-mm-dd",
                     minDate: dateToday,
                     onSelect: function (selected) {
                         var dt = new Date(selected);
@@ -104,7 +106,6 @@ include './header.php';
             $enddate = $_POST['Offer_End_Date'];
             $Status = $_POST['Offer_Status'];
 
-//                    $$startdate=DATE_FORMAT($startdate,'%Y-%m-%d');
             $CheckP = $conn->prepare("SELECT * FROM offer WHERE Offer_Code = ?");
             $CheckP->bind_param("s", $offercode);
             $result = $CheckP->execute();
@@ -129,7 +130,6 @@ include './header.php';
 </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
-<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/start/jquery-ui.css" rel="Stylesheet"
-      type="text/css"/>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/start/jquery-ui.css" rel="Stylesheet" type="text/css"/>
 </body>
 </html>
