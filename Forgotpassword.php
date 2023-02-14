@@ -33,7 +33,7 @@ include './DatabaseConnection.php';
                                     <div class="form-floating mb-3">
                                         <input class="form-control" id="password" name="Opassword" type="password"
                                                placeholder="Old Password"/>
-                                        <label for="inputPassword">Old Password</label>
+                                        <label for="inputPassword" >Old Password</label>
                                     </div>
                                     <span id="Opassword"></span>
                                     <div class="form-floating mb-3">
@@ -112,6 +112,7 @@ if (isset($_POST['updatepassword'])) {
 
         if (count($resultPassword) > 0) {
             if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($Npassword) < 8) {
+               echo "<script>alert('Password must be at least 8 characters and contain at least one number and one special symbol.')</script>";
                 echo "<script>Npass();</script>";
             } else {
                 if($Npassword == $Cpassword){
@@ -127,10 +128,12 @@ if (isset($_POST['updatepassword'])) {
                     }
                 }else{
                     echo "<script>Cpass();</script>";
+                    echo "<script>alert('Passwords do not match.')</script>";
                 }
             }
         } else {
             echo '<script>Opassword();</script>';
+            echo "<script>alert('Please enter valid Old password!.')</script>";
         }
     } else {
         echo '<script>alert("Please enter valid email id!.");</script>';

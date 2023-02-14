@@ -58,6 +58,10 @@ include './DatabaseConnection.php';
                         <div class="sb-nav-link-icon"><i class="fa-regular fa-user"></i></div>
                         Customer
                     </a>
+                    <a class="nav-link" href="booking.php">
+                        <div class="sb-nav-link-icon"><i class="fa-regular fa-user"></i></div>
+                        Booking
+                    </a>
                     <a class="nav-link" href="Admin.php">
                         <div class="sb-nav-link-icon"><i class="fa-regular fa-user"></i></div>
                         Admin
