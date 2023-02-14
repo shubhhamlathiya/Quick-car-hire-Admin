@@ -42,7 +42,7 @@ include './header.php';
                            onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)"
                            placeholder="Car Brand" REQUIRED>
                     <label for="Car_brand">Car Brand</label>
-                </div>
+                 </div>
                 <div class="form-floating mb-3">
                     <input type="file" name="Image" id="Image" class="form-control">
                     <label for="Image">Image</label>

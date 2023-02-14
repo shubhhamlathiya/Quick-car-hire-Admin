@@ -18,7 +18,6 @@
         include './header.php';
 
         $id = intval($_GET['id']);
-
         $query = $conn->prepare("SELECT * FROM offer where Offer_id=?");
         $query->bind_param("s", $id);
         $result = $query->execute();
@@ -77,7 +76,7 @@
                                 <label for="Offer_Status">Offer Status</label>
                             </div>
                             <div class="d-grid gap-2">
-                                <input type="submit" name="Offersubmit" id="Offersubmit" class="btn btn-primary btn-lg"
+                                <input type="submit" name="Offerupdate" id="Offerupdate" class="btn btn-primary btn-lg"
                                        value="Update Offer">
                             </div>
                         </form>
@@ -94,6 +93,7 @@
                         $("#Offer_Start_Date").datepicker({
                             numberOfMonths: 1,
                             minDate: dateToday,
+                            dateFormat: "yy-mm-dd",
                             onSelect: function (selected) {
                                 var dt = new Date(selected);
                                 dt.setDate(dt.getDate() + 1);
@@ -103,6 +103,7 @@
                         $("#Offer_End_Date").datepicker({
                             numberOfMonths: 1,
                             minDate: dateToday,
+                            dateFormat: "yy-mm-dd",
                             onSelect: function (selected) {
                                 var dt = new Date(selected);
                                 dt.setDate(dt.getDate() - 1);
@@ -112,7 +113,7 @@
                     });
                 </script>
                 <?php
-                if (isset($_POST['Offersubmit'])) {
+                if (isset($_POST['Offerupdate'])) {
                     $offercode = $_POST['Offer_Code'];
                     $OfferName = $_POST['Offer_Name'];
                     $OfferAmount = $_POST['Offer_Amount'];
@@ -120,16 +121,14 @@
                     $enddate = $_POST['Offer_End_Date'];
                     $Status = $_POST['Offer_Status'];
 
-                    $offer = $conn->prepare("UPDATE offer SET Offer_code=?,Offer_name=?,Offer_amount=?,Offer_start_date=?,Offer_end_date=?,Status=? WHERE $id");
-                    $offer->bind_param("ssisss", $offercode, $OfferName, $OfferAmount, $startdate, $enddate, $Status);
+                    $offer = $conn->prepare("UPDATE offer SET Offer_code=?,Offer_name=?,Offer_amount=?,Offer_start_date=?,Offer_end_date=?,Status=? WHERE  Offer_id =?");
+                    $offer->bind_param("ssisssi", $offercode, $OfferName, $OfferAmount, $startdate, $enddate, $Status,$id);
                     $AddOffer = $offer->execute();
                     if ($AddOffer > 0) {
                         echo "<script>window.location.href='Offers.php'</script>";
                     } else {
                         echo "<script> alert('$conn->error');</script>";
                     }
-                } else {
-                    echo "<script>alreadyexistOffer();</script>";
                 }
                 ?>
             </div>
