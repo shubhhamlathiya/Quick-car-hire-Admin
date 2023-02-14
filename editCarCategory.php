@@ -14,19 +14,20 @@
         include './header.php';
 
         $Category_id = strval($_GET['id']);
-
+        echo $Category_id;
+        exit();
         $query = $conn->prepare("SELECT * FROM car_category where Category_id=?");
         $query->bind_param("s", $Category_id);
         $result = $query->execute();
         $result = $query->get_result()->fetch_all(MYSQLI_ASSOC);
 
         foreach ($result as $row) {
-            $Category_id = $row['Category_id'];
-            $Category_name = $row['Category_name'];
-            $Seats = $row['Seats'];
-            $Fuel = $row['Fuel'];
-            $Laggage = $row['Laggage'];
-            $Transmission = $row['Transmission'];
+            $id = $row['Category_id'];
+            $name = $row['Category_name'];
+            $categorySeats = $row['Seats'];
+            $categoryFuel = $row['Fuel'];
+            $categoryLaggage = $row['Laggage'];
+            $categoryTransmission = $row['Transmission'];
             ?>
             <div id="layoutSidenav_content">
                 <div class="card mb-4">
