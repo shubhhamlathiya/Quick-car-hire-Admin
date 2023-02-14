@@ -44,7 +44,7 @@ include './header.php';
                     <label for="Car_brand">Car Brand</label>
                  </div>
                 <div class="form-floating mb-3">
-                    <input type="file" name="Image" id="Image" class="form-control">
+                    <input type="file" name="Image" id="Image" accept="image/*" class="form-control">
                     <label for="Image">Image</label>
                 </div>
                 <div class="form-floating mb-3">

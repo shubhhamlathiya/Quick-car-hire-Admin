@@ -17,8 +17,10 @@
         include './Sessionwithoutlogin.php';
         include './header.php';
 
-        $id = intval($_GET['id']);
-        $query = $conn->prepare("SELECT * FROM offer where Offer_id=?");
+//        $id = intval($_GET['id']);
+        $id=strval($_GET['id']);
+
+        $query = $conn->prepare("SELECT * FROM offer where Offer_code=?");
         $query->bind_param("s", $id);
         $result = $query->execute();
         $result = $query->get_result()->fetch_all(MYSQLI_ASSOC);
@@ -121,8 +123,8 @@
                     $enddate = $_POST['Offer_End_Date'];
                     $Status = $_POST['Offer_Status'];
 
-                    $offer = $conn->prepare("UPDATE offer SET Offer_code=?,Offer_name=?,Offer_amount=?,Offer_start_date=?,Offer_end_date=?,Status=? WHERE  Offer_id =?");
-                    $offer->bind_param("ssisssi", $offercode, $OfferName, $OfferAmount, $startdate, $enddate, $Status,$id);
+                    $offer = $conn->prepare("UPDATE offer SET Offer_code=?,Offer_name=?,Offer_amount=?,Offer_start_date=?,Offer_end_date=?,Status=? WHERE  Offer_code =?");
+                    $offer->bind_param("ssissss", $offercode, $OfferName, $OfferAmount, $startdate, $enddate, $Status,$id);
                     $AddOffer = $offer->execute();
                     if ($AddOffer > 0) {
                         echo "<script>window.location.href='Offers.php'</script>";

@@ -25,8 +25,8 @@ include './header.php';
             <div class="card-body">
 
                 <table class="table table-striped">
-                    <thead>
-                    <tr>
+                    <thead style="position: sticky;top: 0" class="thead-dark">
+                    <tr   style=" position: sticky;">
                         <th scope="col"></th>
                         <th scope="col">Registration no</th>
                         <th scope="col">Car_name</th>

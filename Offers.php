@@ -61,7 +61,7 @@ include './header.php';
                             <td><?= $Offer_Start_Date ?></td>
                             <td><?= $Offer_End_Date ?></td>
                             <td><?= $Offer_Status ?></td>
-                            <td><a href="editOffers.php?id=<?= $Oid; ?>"><i class="fa fa-edit"></i></a></td>
+                            <td><a href="editOffers.php?id=<?= $Offer_Code; ?>"><i class="fa fa-edit"></i></a></td>
                         </tr>
                         <?php
                         $id++;
