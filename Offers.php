@@ -76,9 +76,9 @@ include './header.php';
 
                     if (isset($_POST['delete'])) {
                         foreach ($_POST['delete'] as $deleteid) {
-//                                    echo $deleteid;
-                            $deleteUser = "DELETE from offer WHERE Offer_Code='$deleteid'";
-                            $conn->query($deleteUser);
+                            $deleteOffer = $conn->prepare("DELETE from offer WHERE Offer_Code=?");
+                            $deleteOffer->bind_param("s", $deleteid);
+                            $deleteOffer->execute();
                         }
                         echo "<script>window.location.href='Offers.php'</script>";
                     } else {

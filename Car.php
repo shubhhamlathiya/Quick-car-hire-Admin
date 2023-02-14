@@ -81,9 +81,9 @@ include './header.php';
 
                     if (isset($_POST['delete'])) {
                         foreach ($_POST['delete'] as $deleteid) {
-//                                    echo $deleteid;
-                            $deleteUser = "DELETE from car WHERE Registration_no='$deleteid'";
-                            $conn->query($deleteUser);
+                            $deleteCar = $conn->prepare("DELETE from car WHERE Registration_no=?");
+                            $deleteCar->bind_param("s", $deleteid);
+                            $deleteCar->execute();
                         }
                         echo "<script>window.location.href='car.php'</script>";
                     } else {

@@ -44,7 +44,7 @@
                             <div class="form-floating mb-3">
                                 <input class="form-control" id="Offer_Code" name="Offer_Code" type="text"
                                        onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 47 && event.charCode < 58)"
-                                       placeholder="Offer Code" maxlength="10" value="<?php echo $Offer_Code; ?>" required/>
+                                       placeholder="Offer Code" maxlength="10" value="<?php echo $Offer_Code; ?>"   disabled="disabled" required/>
                                 <label for="Offer_Code">Offer Code</label>
                                 <span id="OfferCode"></span>
                             </div>
@@ -72,8 +72,13 @@
                             </div>
                             <div class="form-floating mb-3">
                                 <select class="form-select" name="Offer_Status" required>
-                                    <option value="<?= $Offer_Status ?>">Active</option>
-                                    <option>InActive</option>
+                                <?php
+                                if($Offer_Status == 'InActive'){
+                                 echo  "<option>Active</option><option selected>InActive</option>";
+                                }else{
+                                    echo  "<option selected>Active</option><option>InActive</option>";
+                                }
+                                ?>
                                 </select>
                                 <label for="Offer_Status">Offer Status</label>
                             </div>
@@ -123,8 +128,8 @@
                     $enddate = $_POST['Offer_End_Date'];
                     $Status = $_POST['Offer_Status'];
 
-                    $offer = $conn->prepare("UPDATE offer SET Offer_code=?,Offer_name=?,Offer_amount=?,Offer_start_date=?,Offer_end_date=?,Status=? WHERE  Offer_code =?");
-                    $offer->bind_param("ssissss", $offercode, $OfferName, $OfferAmount, $startdate, $enddate, $Status,$id);
+                    $offer = $conn->prepare("UPDATE offer SET Offer_name=?,Offer_amount=?,Offer_start_date=?,Offer_end_date=?,Status=? WHERE  Offer_code =?");
+                    $offer->bind_param("sissss",$OfferName, $OfferAmount, $startdate, $enddate, $Status,$id);
                     $AddOffer = $offer->execute();
                     if ($AddOffer > 0) {
                         echo "<script>window.location.href='Offers.php'</script>";

@@ -70,9 +70,9 @@ include './header.php';
 
                         if (isset($_POST['delete'])) {
                             foreach ($_POST['delete'] as $deleteid) {
-//                                    echo $deleteid;
-                                $deleteUser = "DELETE from customer WHERE Email='$deleteid'";
-                                $conn->query($deleteUser);
+                                $deleteCustomer = $conn->prepare("DELETE from customer WHERE Email=?");
+                                $deleteCustomer->bind_param("s", $deleteid);
+                                $deleteCustomer->execute();
                             }
                             echo "<script>window.location.href='Customer.php'</script>";
                         } else {

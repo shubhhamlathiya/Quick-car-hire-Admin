@@ -146,12 +146,7 @@ include './header.php';
             $Car_hire_cost = $_POST['Car_hire_cost'];
             $Category_id = $_POST['Category_id'];
 
-//                    $filename = $_FILES["Image"]["name"];
-//                    $tempname = $_FILES["Image"][$R_no];
-//                    $folder = "./CarImg/" . $tempname;
-
             $Img = $_FILES['Image']['name'];
-//                    echo "$Img";
 
             $CheckP = $conn->prepare("SELECT * FROM car WHERE Registration_no = ?");
             $CheckP->bind_param("s", $R_no);

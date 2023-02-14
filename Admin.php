@@ -71,9 +71,9 @@ include './header.php';
 
                     if (isset($_POST['delete'])) {
                         foreach ($_POST['delete'] as $deleteid) {
-//                                    echo $deleteid;
-                            $deleteUser = "DELETE from admin WHERE Admin_email_id='$deleteid'";
-                            $conn->query($deleteUser);
+                            $deleteAdmin = $conn->prepare("DELETE from admin WHERE Admin_email_id=?");
+                            $deleteAdmin->bind_param("s", $deleteid);
+                            $deleteAdmin->execute();
                         }
                         echo "<script>window.location.href='Admin.php'</script>";
                     } else {

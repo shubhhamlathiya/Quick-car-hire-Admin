@@ -74,9 +74,9 @@ include './header.php';
 
                     if (isset($_POST['delete'])) {
                         foreach ($_POST['delete'] as $deleteid) {
-//                                    echo $deleteid;
-                            $deleteUser = "DELETE from car_category WHERE Category_id='$deleteid'";
-                            $conn->query($deleteUser);
+                            $deleteCategory = $conn->prepare("DELETE from car_category WHERE Category_id=?");
+                            $deleteCategory->bind_param("s", $deleteid);
+                            $deleteCategory->execute();
                         }
                         echo "<script>window.location.href='CarCategory.php'</script>";
                     } else {
