@@ -105,8 +105,8 @@ if (isset($_POST['updatepassword'])) {
     $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
 
     if (count($result) > 0) {
-        $sql = $conn->prepare("SELECT * FROM admin WHERE Admin_password = ? ");
-        $sql->bind_param("s", $Opassword);
+        $sql = $conn->prepare("SELECT * FROM admin WHERE Admin_email_id =? && Admin_password = ? ");
+        $sql->bind_param("ss", $Admin_email_id,$Opassword);
         $sql->execute();
         $resultPassword = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
 
