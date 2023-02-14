@@ -18,7 +18,7 @@
         include './header.php';
 
 //        $id = intval($_GET['id']);
-        $id=strval($_GET['id']);
+        $id = strval($_GET['id']);
 
         $query = $conn->prepare("SELECT * FROM offer where Offer_code=?");
         $query->bind_param("s", $id);
@@ -72,13 +72,13 @@
                             </div>
                             <div class="form-floating mb-3">
                                 <select class="form-select" name="Offer_Status" required>
-                                <?php
-                                if($Offer_Status == 'InActive'){
-                                 echo  "<option>Active</option><option selected>InActive</option>";
-                                }else{
-                                    echo  "<option selected>Active</option><option>InActive</option>";
-                                }
-                                ?>
+                                    <?php
+                                    if ($Offer_Status == 'InActive') {
+                                        echo "<option>Active</option><option selected>InActive</option>";
+                                    } else {
+                                        echo "<option selected>Active</option><option>InActive</option>";
+                                    }
+                                    ?>
                                 </select>
                                 <label for="Offer_Status">Offer Status</label>
                             </div>
@@ -129,7 +129,7 @@
                     $Status = $_POST['Offer_Status'];
 
                     $offer = $conn->prepare("UPDATE offer SET Offer_name=?,Offer_amount=?,Offer_start_date=?,Offer_end_date=?,Status=? WHERE  Offer_code =?");
-                    $offer->bind_param("sissss",$OfferName, $OfferAmount, $startdate, $enddate, $Status,$id);
+                    $offer->bind_param("sissss", $OfferName, $OfferAmount, $startdate, $enddate, $Status, $id);
                     $AddOffer = $offer->execute();
                     if ($AddOffer > 0) {
                         echo "<script>window.location.href='Offers.php'</script>";
