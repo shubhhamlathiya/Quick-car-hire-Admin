@@ -36,6 +36,7 @@
                                     <th scope="col">Fuel</th>
                                     <th scope="col">Laggage</th>
                                     <th scope="col">Transmission</th>
+                                    <th scope="col">Edit Category</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -77,7 +78,7 @@
                                        foreach ($_POST['delete'] as $deleteid) {
                                            $deleteCategory = $conn->prepare("DELETE from car_category WHERE Category_id=?");
                                            $deleteCategory->bind_param("s", $deleteid);
-                                           $deleteCategory->execute();
+                                           $Category=$deleteCategory->execute();
                                        }
                                        echo "<script>window.location.href='CarCategory.php'</script>";
                                    } else {

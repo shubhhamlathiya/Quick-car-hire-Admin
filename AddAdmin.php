@@ -43,7 +43,7 @@
                         <div class="form-floating mb-3">
                             <select class="form-select" aria-label="Default select example" name="Status" required>
                                 <option selected>Active</option>
-                                <option>InActive</option>
+                                <option>Deactive</option>
                             </select>
                             <label for="Status">Status</label>
                         </div>

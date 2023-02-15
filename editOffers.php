@@ -73,10 +73,10 @@
                             <div class="form-floating mb-3">
                                 <select class="form-select" name="Offer_Status" required>
                                     <?php
-                                    if ($Offer_Status == 'InActive') {
-                                        echo "<option>Active</option><option selected>InActive</option>";
+                                    if ($Offer_Status == 'Deactive') {
+                                        echo "<option>Active</option><option selected>Deactive</option>";
                                     } else {
-                                        echo "<option selected>Active</option><option>InActive</option>";
+                                        echo "<option selected>Active</option><option>Deactive</option>";
                                     }
                                     ?>
                                 </select>

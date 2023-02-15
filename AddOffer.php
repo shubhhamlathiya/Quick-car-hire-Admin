@@ -57,7 +57,7 @@
                         <div class="form-floating mb-3">
                             <select class="form-select" name="Offer_Status" required>
                                 <option selected>Active</option>
-                                <option>InActive</option>
+                                <option>Deactive</option>
                             </select>
                             <label for="Offer_Status">Offer Status</label>
                         </div>

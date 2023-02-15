@@ -17,6 +17,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         include './DatabaseConnection.php';
         include './Sessionwithoutlogin.php';
         include './header.php';
+
+//        function mimg(){
+//            $Mimg=$_POST['Image1'];
+//            $i=1;
+//            while ($i<=$Mimg) {
+//                echo "<div class='form-floating mb-3'>";
+//                echo "<input type='file' name='Image_$i' id='Image_$i' accept='image/*' class='form-control'>";
+//                echo " <label for='Image_$i'>Image</label>";
+//                echo "</div>";
+//                $i++;
+//            }
+//        }
         ?>
         <div id="layoutSidenav_content">
             <div class="card mb-4">
@@ -47,6 +59,31 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <input type="file" name="Image" id="Image" accept="image/*" class="form-control">
                             <label for="Image">Image</label>
                         </div>
+                        <div class="form-floating mb-3">
+                            <input type="checkbox" name="Multipalimg" value="Multipalimg" id="Multipalimg" onclick="Addimg();">can you add multipal img?
+                        </div>
+                        <div class="form-floating mb-3" id="Mimg" style="display: none;">
+                            <input type="text" name="Image1" placeholder="only enter 1 to 3" id="Image1" class="form-control"
+                                   onkeypress="return (event.charCode > 48 && event.charCode < 52)" maxlength="1" onclick="showmul();">
+                            <label for="Image1">Image</label>
+
+                        </div>
+<!--                       <p >--><?php
+//                        mimg();
+//                           ?><!--</p>-->
+                        <script>
+                            function Addimg() {
+                                var Mimg = document.getElementById("Mimg");
+                                var val = document.getElementById("Multipalimg").checked;
+
+                                if (val) {
+                                    Mimg.style.display = "block";
+
+                                } else {
+                                    Mimg.style.display = "none";
+                                }
+                            }
+                        </script>
                         <div class="form-floating mb-3">
                             <select class="form-select" id="City" aria-label="Default select example" name="City" required>
                                 <option selected>Ahmedabad</option>
@@ -85,7 +122,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class="form-floating mb-3">
                             <select class="form-select" id="Car_Status" name="Car_Status">
                                 <option selected>Active</option>
-                                <option>InActive</option>
+                                <option>Deactive</option>
                             </select>
                             <label for="Car_Status">Car Status</label>
                         </div>

@@ -91,7 +91,7 @@
                         $user_email = $row['Admin_name'];
                         $curr_status = $row['Status'];
                     }
-                    if ($curr_status == 'Inactive') {
+                    if ($curr_status == 'Deactive') {
                         echo '<script>alert("Sorry, your account is temporarily deactivated by the admin.");</script>';
                     } else {
                         $_SESSION['Admin_name'] = $result[0]['Admin_name'];
