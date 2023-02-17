@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <title>Category | Add</title>
-        <meta name="description" content="Add Category"/>
-        <meta name="author" content="Add Category"/>
+        <meta name="description" content="Edit Category"/>
+        <meta name="author" content="Edit Category"/>
     </head>
     <body>
         <?php

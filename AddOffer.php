@@ -24,7 +24,7 @@
                     Add Offer
                 </div>
                 <div class="card-body" style="padding-left: 150px;padding-right: 150px;">
-                    <form method="post">
+                    <form method="post" enctype="multipart/form-data">
                         <div class="form-floating mb-3">
                             <input class="form-control" id="Offer_Code" name="Offer_Code" type="text"
                                    onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 47 && event.charCode < 58)"
@@ -37,6 +37,10 @@
                                    onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode > 31 && event.charCode < 33)"
                                    required/>
                             <label for="Offer_Name">Offer Name</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="file" name="OfferImage" id="OfferImage" accept="image/*" class="form-control">
+                            <label for="Image">Offer Image</label>
                         </div>
                         <div class="form-floating mb-3">
                             <input class="form-control" id="Offer_Amount" name="Offer_Amount" type="text"
@@ -54,8 +58,8 @@
                                    placeholder="Offer End Date" required/>
                             <label for="Offer_End_Date">Offer End Date</label>
                         </div>
-                        <div class="form-floating mb-3">
-                            <select class="form-select" name="Offer_Status" required>
+                        <div class="form-floating mb-3" >
+                            <select class="form-select" name="Offer_Status" required disabled="disabled">
                                 <option selected>Active</option>
                                 <option>Deactive</option>
                             </select>
@@ -106,17 +110,37 @@
                     $enddate = $_POST['Offer_End_Date'];
                     $Status = $_POST['Offer_Status'];
 
+                    $OfferImage = $_FILES['OfferImage']['name'];
+
                     $CheckP = $conn->prepare("SELECT * FROM offer WHERE Offer_Code = ?");
                     $CheckP->bind_param("s", $offercode);
                     $result = $CheckP->execute();
                     $result = $CheckP->get_result()->fetch_all(MYSQLI_ASSOC);
-                    //                  print_r($result);
-//                                      exit();
+
                     if (!count($result) > 0) {
-                        $offer = $conn->prepare("INSERT INTO offer (`Offer_code`, `Offer_name`, `Offer_amount`, `Offer_start_date`, `Offer_end_date`, `Status`) VALUES (?,?,?,?,?,?)");
-                        $offer->bind_param("ssisss", $offercode, $OfferName, $OfferAmount, $startdate, $enddate, $Status);
+
+                        $extensionOffer = pathinfo($OfferImage, PATHINFO_EXTENSION);
+                        $OfferImg = $offercode . "." . $extensionOffer;
+
+                        $today_date = date("yy-mm-dd");
+                        $last_date = $enddate;
+
+                        if($last_date < $today_date){
+                            $Status = "Deactive";
+                        }else{
+                            $Status = "Active";
+                        }
+
+                        if($startdate > $today_date){
+                            $Status = "Active";
+                        }else{
+                            $Status = "Deactive";
+                        }
+                        $offer = $conn->prepare("INSERT INTO offer VALUES (?,?,?,?,?,?,?)");
+                        $offer->bind_param("sssisss", $offercode, $OfferName,$OfferImg, $OfferAmount, $startdate, $enddate, $Status);
                         $AddOffer = $offer->execute();
                         if ($AddOffer > 0) {
+                            move_uploaded_file($_FILES["OfferImage"]["tmp_name"], "Offerimg/" .$OfferImg);
                             echo "<script>window.location.href='Offers.php'</script>";
                         } else {
                             echo "<script> alert('$conn->error');</script>";

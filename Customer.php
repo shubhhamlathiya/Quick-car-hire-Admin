@@ -35,6 +35,17 @@
                                         <th scope="col">AadharCard Number</th>
                                     </tr>
                                 </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Mobile No</th>
+                                        <th scope="col">Date Of Birth</th>
+                                        <th scope="col">Driving Licence</th>
+                                        <th scope="col">AadharCard Number</th>
+                                    </tr>
+                                </tfoot>
                                 <tbody>
                                     <?php
                                     $query = "SELECT * FROM customer";

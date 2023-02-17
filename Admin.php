@@ -36,6 +36,15 @@
                                     <th scope="col">Role</th>
                                 </tr>
                             </thead>
+                            <tfoot>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Admin name</th>
+                                <th scope="col">Admin emailId</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Role</th>
+                            </tr>
+                            </tfoot>
                             <tbody>
                                 <?php
                                 $query = "SELECT * FROM admin";
@@ -71,6 +80,7 @@
 
                             if (isset($_POST['delete'])) {
                                 foreach ($_POST['delete'] as $deleteid) {
+
                                     $deleteAdmin = $conn->prepare("DELETE from admin WHERE Admin_email_id=?");
                                     $deleteAdmin->bind_param("s", $deleteid);
                                     $deleteAdmin->execute();

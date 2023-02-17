@@ -4,14 +4,25 @@
         <meta name="description" content="Dashborad"/>
         <meta name="author" content="Dashborad"/>
         <title>Dashboard - Admin</title>
+        <style>
+            .my-card
+            {
+                position:absolute;
+                left:40%;
+                top:-20px;
+                border-radius:50%;
+            }
+        </style>
     </head>
     <body class="sb-nav-fixed">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css
+              ">
+
         <?php
         include './DatabaseConnection.php';
         include './Sessionwithoutlogin.php';
         include './header.php';
         ?>
-
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
@@ -68,6 +79,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <!--                        <div class="col-xl-3 col-md-6">
                                                     <div class="card bg-success text-white mb-4">
                                                         <div class="card-body">Success Card</div>
@@ -86,6 +98,24 @@
                                                         </div>
                                                     </div>
                                                 </div>-->
+                    </div>
+                    <div class="jumbotron">
+                        <div class="row w-100">
+                            <div class="col-md-3">
+                                <div class="card border-info mx-sm-1 p-3">
+                                    <div class="card border-info shadow text-info p-3 my-card rounded-circle" ><span class="fa fa-car" ></span></div>
+                                    <div class="text-info text-center mt-3"><h4>Cars</h4></div>
+                                    <div class="text-info text-center mt-2"><h1>234</h1></div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card border-warning mx-sm-1 p-3">
+                                    <div class="card border-warning shadow text-warning p-3 my-card" ><span class="fa fa-inbox" aria-hidden="true"></span></div>
+                                    <div class="text-warning text-center mt-3"><h4>Inbox</h4></div>
+                                    <div class="text-warning text-center mt-2"><h1>346</h1></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!--                    <div class="row">
                                             <div class="col-xl-6">
@@ -135,5 +165,11 @@
                 </div>
             </footer>
         </div>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!------ Include the above in your HEAD tag ---------->
     </body>
 </html>

@@ -78,6 +78,10 @@
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-percent"></i></div>
                                 Offers
                             </a>
+                            <a class="nav-link" href="Page.php">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-percent"></i></div>
+                                Manage Pages
+                            </a>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">

@@ -24,8 +24,8 @@
                 <form method="post">
                     <div class="card-body">
 
-                        <table class="table table-striped">
-                            <thead style="position: sticky;top: 0" class="thead-dark">
+                        <table  class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                            <thead>
                                 <tr   style=" position: sticky;">
                                     <th scope="col"></th>
                                     <th scope="col">Registration no</th>
@@ -38,6 +38,19 @@
                                     <th scope="col">Car_hire_cost</th>
                                 </tr>
                             </thead>
+                            <tfoot>
+                            <tr   style=" position: sticky;">
+                                <th scope="col"></th>
+                                <th scope="col">Registration no</th>
+                                <th scope="col">Car_name</th>
+                                <th scope="col">Car_brand</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">City</th>
+                                <th scope="col">Category_id</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Car_hire_cost</th>
+                            </tr>
+                            </tfoot>
                             <tbody>
                                 <?php
                                 $query = "SELECT * FROM car";
@@ -81,6 +94,12 @@
 
                             if (isset($_POST['delete'])) {
                                 foreach ($_POST['delete'] as $deleteid) {
+                                    $query = "SELECT Image FROM car";
+                                    $result = $conn->query($query);
+                                    $Image = $row['Image'];
+
+                                    unlink("CarImg/$Image");
+
                                     $deleteCar = $conn->prepare("DELETE from car WHERE Registration_no=?");
                                     $deleteCar->bind_param("s", $deleteid);
                                     $deleteCar->execute();

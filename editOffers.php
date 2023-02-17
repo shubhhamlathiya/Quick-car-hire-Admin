@@ -6,8 +6,8 @@
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <meta charset="UTF-8">
         <title>Offer | Edit</title>
-        <meta name="description" content="Add Offer"/>
-        <meta name="author" content="Add Offer"/>
+        <meta name="description" content="Edit Offer"/>
+        <meta name="author" content="Edit Offer"/>
 
     </head>
     <body>
@@ -28,6 +28,7 @@
         foreach ($result as $row) {
             $Offer_Code = $row['Offer_code'];
             $Offer_Name = $row['Offer_name'];
+            $Offer_img=$row['Offer_img'];
             $Offer_Amount = $row['Offer_amount'];
             $Offer_Start_Date = $row['Offer_start_date'];
             $Offer_End_Date = $row['Offer_end_date'];
@@ -53,6 +54,9 @@
                                        onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode > 31 && event.charCode < 33)"
                                        value="<?php echo $Offer_Name; ?>" required/>
                                 <label for="Offer_Name">Offer Name</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <img src="Offerimg/<?php echo $Offer_img; ?>" width="100px" height="100px">
                             </div>
                             <div class="form-floating mb-3">
                                 <input class="form-control" id="Offer_Amount" name="Offer_Amount" type="text"

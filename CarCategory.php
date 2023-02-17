@@ -39,6 +39,18 @@
                                     <th scope="col">Edit Category</th>
                                 </tr>
                             </thead>
+                            <tfoot>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Category Id</th>
+                                <th scope="col">Category Name</th>
+                                <th scope="col">Seats</th>
+                                <th scope="col">Fuel</th>
+                                <th scope="col">Laggage</th>
+                                <th scope="col">Transmission</th>
+                                <th scope="col">Edit Category</th>
+                            </tr>
+                            </tfoot>
                             <tbody>
                                 <?php
                                 $query = "SELECT * FROM car_category";
@@ -75,10 +87,19 @@
                                if (isset($_POST['Category_delete'])) {
 
                                    if (isset($_POST['delete'])) {
+//                                       $deleteid=$_POST['delete'];
                                        foreach ($_POST['delete'] as $deleteid) {
                                            $deleteCategory = $conn->prepare("DELETE from car_category WHERE Category_id=?");
                                            $deleteCategory->bind_param("s", $deleteid);
                                            $Category=$deleteCategory->execute();
+                                           echo $Category;
+                                       if ($Category < 0) {
+                                           echo "<script>window.location.href='Admin.php'</script>";
+                                       } else {
+                                           echo "<script> alert('this Car Category not be deleted!');  </script>";
+
+                                       }
+
                                        }
                                        echo "<script>window.location.href='CarCategory.php'</script>";
                                    } else {
