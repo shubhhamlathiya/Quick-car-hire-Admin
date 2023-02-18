@@ -16,6 +16,9 @@ include './header.php';
     function Checkboxseleted() {
         alert('please Select any one check box!');
     }
+    $(document).ready(function () {
+        $('#Page').DataTable();
+    });
 </script>
 <div id="layoutSidenav_content">
     <div class="card mb-4">
@@ -26,7 +29,7 @@ include './header.php';
         <form method="post">
             <div class="card-body">
 
-                <table class="table table-striped">
+                <table id="Page" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                     <tr>
                         <th scope="col"></th>

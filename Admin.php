@@ -16,6 +16,9 @@
             function Checkboxseleted() {
                 alert('please Select any one check box!');
             }
+                $(document).ready(function () {
+                $('.Admin').DataTable();
+            });
         </script>
         <div id="layoutSidenav_content">
             <div class="card mb-4">
@@ -26,7 +29,7 @@
                 <form method="post">
                     <div class="card-body">
 
-                        <table class="table table-striped">
+                        <table  class="table table-striped table-bordered Admin" style="width:100%">
                             <thead>
                                 <tr>
                                     <th scope="col"></th>
@@ -62,9 +65,7 @@
                                         <td><?= $Admin_email_id ?></td>
                                         <td><?= $Status ?></td>
                                         <td><?= $Role ?></td>
-                                        <td>
 
-                                        </td>
                                     </tr>
                                     <?php
                                     $id++;

@@ -4,19 +4,65 @@
         <meta name="description" content="Dashborad"/>
         <meta name="author" content="Dashborad"/>
         <title>Dashboard - Admin</title>
-        <style>
-            .my-card
-            {
-                position:absolute;
-                left:40%;
-                top:-20px;
-                border-radius:50%;
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://kit.fontawesome.com/be19cf8b62.js" crossorigin="anonymous"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <style type="text/css">
+            body{
+                margin-top:20px;
+                background:#FAFAFA;
+            }
+            .order-card {
+                color: #fff;
+            }
+
+            .bg-c-blue {
+                background: linear-gradient(45deg,#4099ff,#73b4ff);
+            }
+
+            .bg-c-green {
+                background: linear-gradient(45deg,#2ed8b6,#59e0c5);
+            }
+
+            .bg-c-yellow {
+                background: linear-gradient(45deg,#FFB64D,#ffcb80);
+            }
+
+            .bg-c-pink {
+                background: linear-gradient(45deg,#FF5370,#ff869a);
+            }
+
+
+            .card {
+                border-radius: 5px;
+                -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+                box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+                border: none;
+                margin-bottom: 30px;
+                -webkit-transition: all 0.3s ease-in-out;
+                transition: all 0.3s ease-in-out;
+            }
+
+            .card .card-block {
+                padding: 25px;
+            }
+
+            .order-card i {
+                font-size: 26px;
+            }
+
+            .f-left {
+                float: left;
+            }
+
+            .f-right {
+                float: right;
             }
         </style>
     </head>
     <body class="sb-nav-fixed">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css
-              ">
 
         <?php
         include './DatabaseConnection.php';
@@ -27,96 +73,65 @@
             <main>
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Dashboard</h1>
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">Dashboard</li>
-                    </ol>
-                    <div class="row">
-                        <?php
-                        $sql = "SELECT * FROM Offer";
-                        $offerresult = mysqli_query($conn, $sql);
-                        $offer = mysqli_num_rows($offerresult);
-                        ?>
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card bg-primary text-white mb-4">
-                                <div class="card-body">Offer Available
-                                    <div><h2 style="margin-left: 60%"><?php echo $offer; ?></h2></div>
-                                </div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="Offers.php">View Details</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                     <div class="row">
+                         <?php
+                         $sql = "SELECT * FROM customer";
+                         $customer_result = mysqli_query($conn, $sql);
+                         $customer = mysqli_num_rows($customer_result);
+                         ?>
+                            <div class="col-6 col-xl-3">
+                                <div class="card bg-c-blue order-card">
+                                    <div class="card-block">
+                                        <h6 class="m-b-20">Customer</h6>
+                                        <h2 class="text-right"><i style="margin-right: 14rem" class="fa-regular fa-user"></i><span><?php echo $customer; ?></span></h2>
+                                        <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <?php
-                        $sql = "SELECT * FROM customer";
-                        $customer_result = mysqli_query($conn, $sql);
-                        $customer = mysqli_num_rows($customer_result);
-                        ?>
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card bg-primary text-white mb-4">
-                                <div class="card-body">Total Customer
-                                    <div><h2 style="margin-left: 60%"><?php echo $customer; ?></h2></div>
-                                </div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="Customer.php">View Details</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                         <?php
+                         $sql = "SELECT * FROM car";
+                         $car_result = mysqli_query($conn, $sql);
+                         $car = mysqli_num_rows($car_result);
+                         ?>
+                            <div class="col-6 col-xl-3">
+                                <div class="card bg-c-green order-card">
+                                    <div class="card-block">
+                                        <h6 class="m-b-20">Orders Received</h6>
+                                        <h2 class="text-right"><i style="margin-right: 200px" class="fa-solid fa-car"></i><span><?php echo $car; ?></span></h2>
+                                        <p class="m-b-0">Completed Orders<span
+                                                    class="f-right">351</span></p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <?php
-                        $sql = "SELECT * FROM car";
-                        $car_result = mysqli_query($conn, $sql);
-                        $car = mysqli_num_rows($car_result);
-                        ?>
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card bg-primary text-white mb-4">
-                                <div class="card-body">Total Car
-                                    <div><h2 style="margin-left: 60%"><?php echo $car; ?></h2></div>
+                         <?php
+                         $sql = "SELECT * FROM Offer";
+                         $offerresult = mysqli_query($conn, $sql);
+                         $offer = mysqli_num_rows($offerresult);
+                         ?>
+                            <div class="col-md-2 col-xl-3">
+                                <div class="card bg-c-yellow order-card">
+                                    <div class="card-block">
+                                        <h6 class="m-b-20">Orders Received</h6>
+                                        <h2 class="text-right"><i class="fa fa-refresh
+                                    f-left"></i><span>486</span></h2>
+                                        <p class="m-b-0">Completed Orders<span
+                                                    class="f-right">351</span></p>
+                                    </div>
                                 </div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="Car.php">View Details</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                            </div>
+                            <div class="col-md-2 col-xl-3">
+                                <div class="card bg-c-pink order-card">
+                                    <div class="card-block">
+                                        <h6 class="m-b-20">Orders Received</h6>
+                                        <h2 class="text-right"><i class="fa fa-credit-card
+                                    f-left"></i><span>486</span></h2>
+                                        <p class="m-b-0">Completed Orders<span
+                                                    class="f-right">351</span></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!--                        <div class="col-xl-3 col-md-6">
-                                                    <div class="card bg-success text-white mb-4">
-                                                        <div class="card-body">Success Card</div>
-                                                        <div class="card-footer d-flex align-items-center justify-content-between">
-                                                            <a class="small text-white stretched-link" href="#">View Details</a>
-                                                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-3 col-md-6">
-                                                    <div class="card bg-danger text-white mb-4">
-                                                        <div class="card-body">Danger Card</div>
-                                                        <div class="card-footer d-flex align-items-center justify-content-between">
-                                                            <a class="small text-white stretched-link" href="#">View Details</a>
-                                                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                                        </div>
-                                                    </div>
-                                                </div>-->
-                    </div>
-                    <div class="jumbotron">
-                        <div class="row w-100">
-                            <div class="col-md-3">
-                                <div class="card border-info mx-sm-1 p-3">
-                                    <div class="card border-info shadow text-info p-3 my-card rounded-circle" ><span class="fa fa-car" ></span></div>
-                                    <div class="text-info text-center mt-3"><h4>Cars</h4></div>
-                                    <div class="text-info text-center mt-2"><h1>234</h1></div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card border-warning mx-sm-1 p-3">
-                                    <div class="card border-warning shadow text-warning p-3 my-card" ><span class="fa fa-inbox" aria-hidden="true"></span></div>
-                                    <div class="text-warning text-center mt-3"><h4>Inbox</h4></div>
-                                    <div class="text-warning text-center mt-2"><h1>346</h1></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <!--                    <div class="row">
                                             <div class="col-xl-6">
                                                 <div class="card mb-4">
@@ -143,11 +158,11 @@
                                                 DataTable Example
                                             </div>
                                             <div class="card-body">
-        
-        
-        
-        
-        
+
+
+
+
+
                                             </div>
                                         </div>-->
                 </div>
@@ -165,11 +180,5 @@
                 </div>
             </footer>
         </div>
-
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <!------ Include the above in your HEAD tag ---------->
     </body>
 </html>

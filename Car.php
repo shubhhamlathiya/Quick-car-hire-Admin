@@ -14,6 +14,9 @@
             function Checkboxseleted() {
                 alert('please Select any one check box!');
             }
+                $(document).ready(function () {
+                $('#Car').DataTable();
+            });
         </script>
         <div id="layoutSidenav_content">
             <div class="card mb-4">
@@ -24,7 +27,7 @@
                 <form method="post">
                     <div class="card-body">
 
-                        <table  class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                        <table  id="Car" class="table table-striped table-bordered" style="width:100%" >
                             <thead>
                                 <tr   style=" position: sticky;">
                                     <th scope="col"></th>

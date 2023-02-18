@@ -13,6 +13,11 @@
         include './Sessionwithoutlogin.php';
         include './header.php';
         ?>
+        <script>
+            $(document).ready(function () {
+                $('#Customer').DataTable();
+            });
+        </script>
         <div id="layoutSidenav_content">
             <main>
                 <div class="card mb-4">
@@ -23,7 +28,7 @@
                     <form method="post">
                         <div class="card-body">
 
-                            <table class="table table-striped">
+                            <table id="Customer" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th scope="col"></th>

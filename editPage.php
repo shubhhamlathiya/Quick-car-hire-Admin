@@ -54,8 +54,22 @@ foreach ($result as $row) {
                 </div>
                 <div class="form-outline">
                     <textarea class="form-control" id="textAreaExample1" rows="14">
-                        <?php echo htmlentities($Page_details);?>
-
+<!--                        --><?php //echo "$Page_details";?>
+                        <?php
+//                        $pagetype = $_GET['type'];
+                        $query = $conn->prepare("SELECT Page_details from Page where Page_id=?");
+                        $query->bind_param('i', $id );
+                        $query->execute();
+                        $result = $query->get_result();
+//                        print_r($result);
+//                        exit();
+                        $cnt = 1;
+                        if (!$query->rowCount() > 0) {
+                            foreach ($result as $result) {
+                                echo htmlentities($result->Page_details);
+                            }
+                        }
+                        ?>
                     </textarea>
                     <label class="form-label" for="textAreaExample">Message</label>
                 </div>
