@@ -37,7 +37,7 @@
                                     <th scope="col">Offer Code</th>
                                     <th scope="col">Offer Name</th>
                                     <th scope="col">Offer Image</th>
-                                    <th scope="col">Offer Amount</th>
+                                    <th scope="col">Offer Percentage</th>
                                     <th scope="col">Offer Start Date</th>
                                     <th scope="col">Offer End Date</th>
                                     <th scope="col">Offer Status</th>
@@ -50,7 +50,7 @@
                                     <th scope="col">Offer Code</th>
                                     <th scope="col">Offer Name</th>
                                     <th scope="col">Offer Image</th>
-                                    <th scope="col">Offer Amount</th>
+                                    <th scope="col">Offer Percentage</th>
                                     <th scope="col">Offer Start Date</th>
                                     <th scope="col">Offer End Date</th>
                                     <th scope="col">Offer Status</th>
@@ -80,7 +80,7 @@
                                             <img src="Offerimg/<?php echo $Image; ?>" width="100px" height="100px"><br/>
                                             <?php echo $Image ?>
                                         </td>
-                                        <td><?= $Offer_Amount ?></td>
+                                        <td><?= $Offer_Amount."%" ?></td>
                                         <td><?= $Offer_Start_Date ?></td>
                                         <td><?= $Offer_End_Date ?></td>
                                         <td><?= $Offer_Status ?></td>

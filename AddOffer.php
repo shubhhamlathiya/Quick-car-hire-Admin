@@ -46,7 +46,7 @@
                             <input class="form-control" id="Offer_Amount" name="Offer_Amount" type="text"
                                    placeholder="Offer Amount" onkeypress="return (event.charCode > 47 && event.charCode < 58)"
                                    required/>
-                            <label for="Offer_Amount">Offer Amount</label>
+                            <label for="Offer_Amount">Offer Percentage</label>
                         </div>
                         <div class="form-floating mb-3">
                             <input class="form-control" id="Offer_Start_Date" name="Offer_Start_Date" type="text"

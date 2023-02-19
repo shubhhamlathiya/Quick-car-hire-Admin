@@ -40,7 +40,7 @@
                             </div>
                             <div class="form-floating mb-3">
                                 <input class="form-control" id="Admin_email_id" name="Admin_email_id" type="email"
-                                       value="<?php echo $Admin_email_id; ?>" placeholder="Admin email id" required>
+                                       disabled="disabled" value="<?php echo $Admin_email_id; ?>" placeholder="Admin email id" required>
                                 <label for="Adminemail">Admin email id</label>
                                 <span id="Email"></span>
                             </div>
@@ -79,7 +79,7 @@
                             </div>
                             <div class="d-grid gap-2">
                                 <input type="submit" name="Adminsubmit" id="Adminsubmit" class="btn btn-primary btn-lg"
-                                       value="Add Admin">
+                                       value="Update Admin">
                             </div>
                         </form>
                     <?php } ?>
