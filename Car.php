@@ -32,26 +32,28 @@
                                 <tr   style=" position: sticky;">
                                     <th scope="col"></th>
                                     <th scope="col">Registration no</th>
-                                    <th scope="col">Car_name</th>
-                                    <th scope="col">Car_brand</th>
+                                    <th scope="col">Car name</th>
+                                    <th scope="col">Car brand</th>
+                                    <th scope="col">Model Year</th>
                                     <th scope="col">Image</th>
                                     <th scope="col">City</th>
-                                    <th scope="col">Category_id</th>
+                                    <th scope="col">Category id</th>
                                     <th scope="col">Status</th>
-                                    <th scope="col">Car_hire_cost</th>
+                                    <th scope="col">Car hire cost</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr   style=" position: sticky;">
                                     <th scope="col"></th>
                                     <th scope="col">Registration no</th>
-                                    <th scope="col">Car_name</th>
-                                    <th scope="col">Car_brand</th>
+                                    <th scope="col">Car name</th>
+                                    <th scope="col">Car brand</th>
+                                    <th scope="col">Model Year</th>
                                     <th scope="col">Image</th>
                                     <th scope="col">City</th>
-                                    <th scope="col">Category_id</th>
+                                    <th scope="col">Category id</th>
                                     <th scope="col">Status</th>
-                                    <th scope="col">Car_hire_cost</th>
+                                    <th scope="col">Car hire cost</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -63,6 +65,7 @@
                                     $R_no = $row['Registration_no'];
                                     $Car_name = $row['Car_name'];
                                     $Car_brand = $row['Car_brand'];
+                                    $ModelYear=$row['ModelYear'];
                                     $Image = $row['Image'];
                                     $City = $row['City'];
                                     $Category_id = $row['Category_id'];
@@ -74,6 +77,7 @@
                                         <td><?= $R_no ?></td>
                                         <td><?= $Car_name ?></td>
                                         <td><?= $Car_brand ?></td>
+                                        <td><?= $ModelYear ?></td>
                                         <td>
                                             <img src="CarImg/<?php echo $Image; ?>" width="100px" height="100px"><br/>
                                             <?php echo $Image ?>
@@ -89,7 +93,6 @@
                                 ?>
                             </tbody>
                         </table>
-
                         <a href="AddCar.php" class="btn btn-primary">+Add Car</a>
                         <input type="submit" class="btn btn-primary" name="Car_delete" id="but_delete" value="Delete Car">
                         <?php

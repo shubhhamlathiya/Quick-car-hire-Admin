@@ -37,7 +37,7 @@
                                     <th scope="col">Admin emailId</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Role</th>
-                                    <th scope="col"></th>
+                                    <th scope="col">Edit</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -47,7 +47,7 @@
                                 <th scope="col">Admin emailId</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Role</th>
-                                <th scope="col"></th>
+                                <th scope="col">Edit</th>
                             </tr>
                             </tfoot>
                             <tbody>

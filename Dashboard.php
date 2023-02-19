@@ -110,8 +110,7 @@
                                         <h6 class="m-b-20">Total Car</h6>
                                         <h2 class="text-right"><i style="margin-right: 200px" class="fa-solid fa-car"></i><span><?php echo $count; ?></span></h2>
                                         <p class="m-b-0">Deactive Car<span class="f-right"><?php   echo $Deactive; ?></span></p>
-<!--                                        <p class="m-b-0">Active Car<span class="f-right">--><?php //    echo $active; ?><!--</span></p>-->
-                                    </div>
+                                        </div>
                                 </div>
                             </div>
                          <?php

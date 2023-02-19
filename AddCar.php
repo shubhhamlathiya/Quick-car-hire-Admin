@@ -56,6 +56,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <label for="Car_brand">Car Brand</label>
                         </div>
                         <div class="form-floating mb-3">
+                            <input class="form-control" id="ModelYear" name="ModelYear" type="text"
+                                   onkeypress="return (event.charCode > 47 && event.charCode < 58)" maxlength="4"
+                                   placeholder="Car Model Year" REQUIRED>
+                            <label for="Car_brand">Car Model Year</label>
+                        </div>
+                        <div class="form-floating mb-3">
                             <input type="file" name="Image" id="Image" accept="image/*" class="form-control">
                             <label for="Image">Image</label>
                         </div>
@@ -68,10 +74,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <label for="Image1">Image</label>
 
                         </div>
-<!--                       <p >--><?php
-//                        mimg();
-//                           
-                        ?><!--</p>-->
                         <script>
                             function Addimg() {
                                 var Mimg = document.getElementById("Mimg");
@@ -179,6 +181,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     $R_no = $_POST['R_no'];
                     $Car_name = $_POST['Car_name'];
                     $Car_brand = $_POST['Car_brand'];
+                    $ModelYear=$_POST['ModelYear'];
                     $City = $_POST['City'];
                     $Car_Status = $_POST['Car_Status'];
                     $Car_hire_cost = $_POST['Car_hire_cost'];
@@ -196,8 +199,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         $extension = pathinfo($_FILES["Image"]["name"], PATHINFO_EXTENSION);
                         $imgname = $R_no . "." . $extension;
 
-                        $car = $conn->prepare("INSERT INTO car VALUES (?,?,?,?,?,?,?,?)");
-                        $car->bind_param("sssssssi", $R_no, $Car_name, $Car_brand, $imgname, $City, $Category_id, $Car_Status, $Car_hire_cost);
+                        $car = $conn->prepare("INSERT INTO car VALUES (?,?,?,?,?,?,?,?,?)");
+                        $car->bind_param("ssssssssi", $R_no, $Car_name, $Car_brand,$ModelYear, $imgname, $City, $Category_id, $Car_Status, $Car_hire_cost);
                         $Addcar = $car->execute();
 
                         if ($Addcar > 0) {

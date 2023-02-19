@@ -65,9 +65,15 @@
                             </div>
                             <div class="form-floating mb-3">
                                 <select class="form-select" aria-label="Default select example" name="Role" required>
-                                    <option selected>Admin</option>
-                                    <option>Manager</option>
-                                    <option>Employee</option>
+                                    <?php
+                                    if($Role == 'admin'){
+                                        echo "<option selected>Admin</option><option>Manager</option><option>Employee</option>";
+                                    }elseif ($Role == 'manager'){
+                                        echo "<option>Admin</option><option selected>Manager</option><option>Employee</option>";
+                                    }else{
+                                        echo "<option>Admin</option><option>Manager</option><option selected>Employee</option>";
+                                    }
+                                    ?>
                                 </select>
                                 <label for="Role">Role</label>
                             </div>

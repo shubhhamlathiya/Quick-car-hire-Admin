@@ -6,22 +6,18 @@
             <file>file:/C:/xampp/htdocs/QuickCarHire_Admin/AddCategory.php</file>
             <file>file:/C:/xampp/htdocs/QuickCarHire_Admin/booking.php</file>
             <file>file:/C:/xampp/htdocs/QuickCarHire_Admin/AddAdmin.php</file>
-            <file>file:/C:/xampp/htdocs/QuickCarHire_Admin/header.php</file>
-            <file>file:/C:/xampp/htdocs/QuickCarHire_Admin/editCarCategory.php</file>
             <file>file:/C:/xampp/htdocs/QuickCarHire_Admin/editOffers.php</file>
             <file>file:/C:/xampp/htdocs/QuickCarHire_Admin/Offers.php</file>
-            <file>file:/C:/xampp/htdocs/QuickCarHire_Admin/DatabaseConnection.php</file>
-            <file>file:/C:/xampp/htdocs/QuickCarHire_Admin/Dashboard.php</file>
-            <file>file:/C:/xampp/htdocs/QuickCarHire_Admin/Forgotpassword.php</file>
             <file>file:/C:/xampp/htdocs/QuickCarHire_Admin/editCar.php</file>
             <file>file:/C:/xampp/htdocs/QuickCarHire_Admin/AddOffer.php</file>
             <file>file:/C:/xampp/htdocs/QuickCarHire_Admin/CarCategory.php</file>
             <file>file:/C:/xampp/htdocs/QuickCarHire_Admin/Customer.php</file>
-            <file>file:/C:/xampp/htdocs/QuickCarHire_Admin/Admin.php</file>
-            <file>file:/C:/xampp/htdocs/QuickCarHire_Admin/Sessionwithoutlogin.php</file>
             <file>file:/C:/xampp/htdocs/QuickCarHire_Admin/index.php</file>
-            <file>file:/C:/xampp/htdocs/QuickCarHire_Admin/Car.php</file>
+            <file>file:/C:/xampp/htdocs/QuickCarHire_Admin/editAdmin.php</file>
+            <file>file:/C:/xampp/htdocs/QuickCarHire_Admin/Page.php</file>
+            <file>file:/C:/xampp/htdocs/QuickCarHire_Admin/editPage.php</file>
             <file>file:/C:/xampp/htdocs/QuickCarHire_Admin/AddCar.php</file>
+            <file>file:/C:/xampp/htdocs/QuickCarHire_Admin/Car.php</file>
         </group>
     </open-files>
 </project-private>
