@@ -28,7 +28,7 @@
         foreach ($result as $row) {
             $Offer_Code = $row['Offer_code'];
             $Offer_Name = $row['Offer_name'];
-            $Offer_img=$row['Offer_img'];
+            $Offer_img = $row['Offer_img'];
             $Offer_Amount = $row['Offer_amount'];
             $Offer_Start_Date = $row['Offer_start_date'];
             $Offer_End_Date = $row['Offer_end_date'];

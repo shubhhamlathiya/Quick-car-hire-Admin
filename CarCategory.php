@@ -17,7 +17,7 @@
                 alert('please Select any one check box!');
             }
 
-                $(document).ready(function () {
+            $(document).ready(function () {
                 $('#CarCategory').DataTable();
             });
 
@@ -30,7 +30,6 @@
                 </div>
                 <form method="post">
                     <div class="card-body">
-
                         <table id="CarCategory" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
@@ -45,16 +44,16 @@
                                 </tr>
                             </thead>
                             <tfoot>
-                            <tr>
-                                <th scope="col"></th>
-                                <th scope="col">Category Id</th>
-                                <th scope="col">Category Name</th>
-                                <th scope="col">Seats</th>
-                                <th scope="col">Fuel</th>
-                                <th scope="col">Laggage</th>
-                                <th scope="col">Transmission</th>
-                                <th scope="col">Edit Category</th>
-                            </tr>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">Category Id</th>
+                                    <th scope="col">Category Name</th>
+                                    <th scope="col">Seats</th>
+                                    <th scope="col">Fuel</th>
+                                    <th scope="col">Laggage</th>
+                                    <th scope="col">Transmission</th>
+                                    <th scope="col">Edit Category</th>
+                                </tr>
                             </tfoot>
                             <tbody>
                                 <?php
@@ -96,15 +95,13 @@
                                        foreach ($_POST['delete'] as $deleteid) {
                                            $deleteCategory = $conn->prepare("DELETE from car_category WHERE Category_id=?");
                                            $deleteCategory->bind_param("s", $deleteid);
-                                           $Category=$deleteCategory->execute();
+                                           $Category = $deleteCategory->execute();
                                            echo $Category;
-                                       if ($Category < 0) {
-                                           echo "<script>window.location.href='Admin.php'</script>";
-                                       } else {
-                                           echo "<script> alert('this Car Category not be deleted!');  </script>";
-
-                                       }
-
+                                           if ($Category < 0) {
+                                               echo "<script>window.location.href='Admin.php'</script>";
+                                           } else {
+                                               echo "<script> alert('this Car Category not be deleted!');  </script>";
+                                           }
                                        }
                                        echo "<script>window.location.href='CarCategory.php'</script>";
                                    } else {

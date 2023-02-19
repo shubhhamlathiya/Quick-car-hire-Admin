@@ -90,23 +90,45 @@
                             </div>
                          <?php
                          $sql = "SELECT * FROM car";
-                         $car_result = mysqli_query($conn, $sql);
-                         $car = mysqli_num_rows($car_result);
+                         $result = $conn->query($sql);
+                         $Deactive=0;
+                         $active=0;
+                         $count=0;
+                         while ($row = mysqli_fetch_array($result)) {
+                             $count++;
+                             $curr_status = $row['Status'];
+                             if($curr_status == 'Deactive'){
+                                 $Deactive++;
+                             }else{
+                                 $active++;
+                             }
+                         }
                          ?>
                             <div class="col-6 col-xl-3">
                                 <div class="card bg-c-green order-card">
                                     <div class="card-block">
-                                        <h6 class="m-b-20">Orders Received</h6>
-                                        <h2 class="text-right"><i style="margin-right: 200px" class="fa-solid fa-car"></i><span><?php echo $car; ?></span></h2>
-                                        <p class="m-b-0">Completed Orders<span
-                                                    class="f-right">351</span></p>
+                                        <h6 class="m-b-20">Total Car</h6>
+                                        <h2 class="text-right"><i style="margin-right: 200px" class="fa-solid fa-car"></i><span><?php echo $count; ?></span></h2>
+                                        <p class="m-b-0">Deactive Car<span class="f-right"><?php   echo $Deactive; ?></span></p>
+<!--                                        <p class="m-b-0">Active Car<span class="f-right">--><?php //    echo $active; ?><!--</span></p>-->
                                     </div>
                                 </div>
                             </div>
                          <?php
                          $sql = "SELECT * FROM Offer";
-                         $offerresult = mysqli_query($conn, $sql);
-                         $offer = mysqli_num_rows($offerresult);
+                         $result = $conn->query($sql);
+                         $OfferDeactive=0;
+                         $Offeractive=0;
+                         $Offercount=0;
+                         while ($row = mysqli_fetch_array($result)) {
+                             $Offercount++;
+                             $curr_status = $row['Status'];
+                             if($curr_status == 'Deactive'){
+                                 $OfferDeactive++;
+                             }else{
+                                 $Offeractive++;
+                             }
+                         }
                          ?>
                             <div class="col-md-2 col-xl-3">
                                 <div class="card bg-c-yellow order-card">
@@ -131,40 +153,6 @@
                                 </div>
                             </div>
                         </div>
-
-                    <!--                    <div class="row">
-                                            <div class="col-xl-6">
-                                                <div class="card mb-4">
-                                                    <div class="card-header">
-                                                        <i class="fas fa-chart-area me-1"></i>
-                                                        Area Chart Example
-                                                    </div>
-                                                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6">
-                                                <div class="card mb-4">
-                                                    <div class="card-header">
-                                                        <i class="fas fa-chart-bar me-1"></i>
-                                                        Bar Chart Example
-                                                    </div>
-                                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-                                                </div>
-                                            </div>
-                                        </div>-->
-                    <!--                    <div class="card mb-4">
-                                            <div class="card-header">
-                                                <i class="fas fa-table me-1"></i>
-                                                DataTable Example
-                                            </div>
-                                            <div class="card-body">
-
-
-
-
-
-                                            </div>
-                                        </div>-->
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">

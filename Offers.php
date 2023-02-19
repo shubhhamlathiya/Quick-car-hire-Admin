@@ -16,7 +16,7 @@
             function Checkboxseleted() {
                 alert('please Select any one check box!');
             }
-                $(document).ready(function () {
+            $(document).ready(function () {
                 $('#Offer').DataTable();
             });
         </script>
@@ -45,17 +45,17 @@
                                 </tr>
                             </thead>
                             <tfoot>
-                            <tr>
-                                <th scope="col"></th>
-                                <th scope="col">Offer Code</th>
-                                <th scope="col">Offer Name</th>
-                                <th scope="col">Offer Image</th>
-                                <th scope="col">Offer Amount</th>
-                                <th scope="col">Offer Start Date</th>
-                                <th scope="col">Offer End Date</th>
-                                <th scope="col">Offer Status</th>
-                                <th scope="col">Offer Edit</th>
-                            </tr>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">Offer Code</th>
+                                    <th scope="col">Offer Name</th>
+                                    <th scope="col">Offer Image</th>
+                                    <th scope="col">Offer Amount</th>
+                                    <th scope="col">Offer Start Date</th>
+                                    <th scope="col">Offer End Date</th>
+                                    <th scope="col">Offer Status</th>
+                                    <th scope="col">Offer Edit</th>
+                                </tr>
                             </tfoot>
                             <tbody>
                                 <?php
@@ -66,7 +66,7 @@
                                     $Oid = $row['Offer_id'];
                                     $Offer_Code = $row['Offer_code'];
                                     $Offer_Name = $row['Offer_name'];
-                                    $Image=$row['Offer_img'];
+                                    $Image = $row['Offer_img'];
                                     $Offer_Amount = $row['Offer_amount'];
                                     $Offer_Start_Date = $row['Offer_start_date'];
                                     $Offer_End_Date = $row['Offer_end_date'];

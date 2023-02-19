@@ -70,7 +70,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </div>
 <!--                       <p >--><?php
 //                        mimg();
-//                           ?><!--</p>-->
+//                           
+                        ?><!--</p>-->
                         <script>
                             function Addimg() {
                                 var Mimg = document.getElementById("Mimg");
@@ -104,7 +105,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     $Category_id = $row['Category_id'];
                                     ?>
                                     <option id='tr_<?= $id ?>'>
-                                        <?= $Category_id ?>
+                                    <?= $Category_id ?>
                                     </option>
                                     <?php
                                     $id++;

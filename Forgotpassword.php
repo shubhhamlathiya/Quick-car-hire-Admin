@@ -13,6 +13,7 @@
     <body>
         <?php
         include './DatabaseConnection.php';
+        include './Sessionwithoutlogin.php';
         ?>
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">

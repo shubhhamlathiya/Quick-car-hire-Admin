@@ -125,22 +125,22 @@
                         $today_date = date("yy-mm-dd");
                         $last_date = $enddate;
 
-                        if($last_date < $today_date){
+                        if ($last_date < $today_date) {
                             $Status = "Deactive";
-                        }else{
+                        } else {
                             $Status = "Active";
                         }
 
-                        if($startdate > $today_date){
+                        if ($startdate > $today_date) {
                             $Status = "Active";
-                        }else{
+                        } else {
                             $Status = "Deactive";
                         }
                         $offer = $conn->prepare("INSERT INTO offer VALUES (?,?,?,?,?,?,?)");
-                        $offer->bind_param("sssisss", $offercode, $OfferName,$OfferImg, $OfferAmount, $startdate, $enddate, $Status);
+                        $offer->bind_param("sssisss", $offercode, $OfferName, $OfferImg, $OfferAmount, $startdate, $enddate, $Status);
                         $AddOffer = $offer->execute();
                         if ($AddOffer > 0) {
-                            move_uploaded_file($_FILES["OfferImage"]["tmp_name"], "Offerimg/" .$OfferImg);
+                            move_uploaded_file($_FILES["OfferImage"]["tmp_name"], "Offerimg/" . $OfferImg);
                             echo "<script>window.location.href='Offers.php'</script>";
                         } else {
                             echo "<script> alert('$conn->error');</script>";

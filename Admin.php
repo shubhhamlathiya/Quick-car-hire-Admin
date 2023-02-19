@@ -37,6 +37,7 @@
                                     <th scope="col">Admin emailId</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Role</th>
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -46,6 +47,7 @@
                                 <th scope="col">Admin emailId</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Role</th>
+                                <th scope="col"></th>
                             </tr>
                             </tfoot>
                             <tbody>
@@ -65,7 +67,7 @@
                                         <td><?= $Admin_email_id ?></td>
                                         <td><?= $Status ?></td>
                                         <td><?= $Role ?></td>
-
+                                        <td><a href="editAdmin.php?id=<?= $Admin_email_id; ?>"><i class="fa fa-edit"></i></a></td>
                                     </tr>
                                     <?php
                                     $id++;

@@ -12,6 +12,7 @@
     <body>
         <?php
         include './DatabaseConnection.php';
+        include './Sessionwithoutlogin.php';
         ?>
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->

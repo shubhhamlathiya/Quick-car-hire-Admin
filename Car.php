@@ -14,7 +14,7 @@
             function Checkboxseleted() {
                 alert('please Select any one check box!');
             }
-                $(document).ready(function () {
+            $(document).ready(function () {
                 $('#Car').DataTable();
             });
         </script>
@@ -42,17 +42,17 @@
                                 </tr>
                             </thead>
                             <tfoot>
-                            <tr   style=" position: sticky;">
-                                <th scope="col"></th>
-                                <th scope="col">Registration no</th>
-                                <th scope="col">Car_name</th>
-                                <th scope="col">Car_brand</th>
-                                <th scope="col">Image</th>
-                                <th scope="col">City</th>
-                                <th scope="col">Category_id</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Car_hire_cost</th>
-                            </tr>
+                                <tr   style=" position: sticky;">
+                                    <th scope="col"></th>
+                                    <th scope="col">Registration no</th>
+                                    <th scope="col">Car_name</th>
+                                    <th scope="col">Car_brand</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">City</th>
+                                    <th scope="col">Category_id</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Car_hire_cost</th>
+                                </tr>
                             </tfoot>
                             <tbody>
                                 <?php
