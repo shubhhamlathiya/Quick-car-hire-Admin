@@ -65,7 +65,15 @@
                                         <td><input type='checkbox' name='delete[]' value='<?= $Admin_email_id ?>'></td>
                                         <td><?= $Admin_name ?></td>
                                         <td><?= $Admin_email_id ?></td>
-                                        <td><?= $Status ?></td>
+                                        <td>
+                                            <?php
+                                            if ($Status == 'Deactive') {
+                                               echo   "<span class='badge badge-secondary'>$Status</span>";
+                                            }else{
+                                                echo "<span class='badge badge-success'>$Status</span>";
+                                            }
+                                            ?>
+                                        </td>
                                         <td><?= $Role ?></td>
                                         <td><a href="editAdmin.php?id=<?= $Admin_email_id; ?>"><i class="fa fa-edit"></i></a></td>
                                     </tr>

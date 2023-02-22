@@ -58,9 +58,13 @@
                             </tfoot>
                             <tbody>
                                 <?php
-                                $query = "SELECT * FROM car";
+                                $car="Car";
+//                                $deleteCar = $conn->prepare("SELECT * FROM ?");
+//                                foreach ($result as $row) {
+//                                    $car ="SELECT * FROM Car";
+//                                    $result
+                                          $query = "SELECT * FROM Car";
                                 $result = $conn->query($query);
-                                $id = 1;
                                 while ($row = mysqli_fetch_array($result)) {
                                     $R_no = $row['Registration_no'];
                                     $Car_name = $row['Car_name'];
@@ -84,7 +88,15 @@
                                         </td>
                                         <td><?= $City ?></td>
                                         <td><?= $Category_id ?></td>
-                                        <td><?= $Car_Status ?></td>
+                                        <td>
+                                            <?php
+                                            if ($Car_Status == 'Deactive') {
+                                                echo   "<span class='badge badge-secondary'>$Car_Status</span>";
+                                            }else{
+                                                echo "<span class='badge badge-success'>$Car_Status</span>";
+                                            }
+                                            ?>
+                                        </td>
                                         <td><?= $Car_hire_cost ?></td>
                                     </tr>
                                     <?php

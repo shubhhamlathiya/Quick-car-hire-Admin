@@ -83,7 +83,15 @@
                                         <td><?= $Offer_Amount."%" ?></td>
                                         <td><?= $Offer_Start_Date ?></td>
                                         <td><?= $Offer_End_Date ?></td>
-                                        <td><?= $Offer_Status ?></td>
+                                        <td>
+                                            <?php
+                                            if ($Offer_Status == 'Deactive') {
+                                                echo   "<span class='badge badge-secondary'>$Offer_Status</span>";
+                                            }else{
+                                                echo "<span class='badge badge-success'>$Offer_Status</span>";
+                                            }
+                                            ?>
+                                        </td>
                                         <td><a href="editOffers.php?id=<?= $Offer_Code; ?>"><i class="fa fa-edit"></i></a></td>
                                     </tr>
                                     <?php
